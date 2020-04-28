@@ -12,6 +12,50 @@
  * Replaces the styles provided by the views_ui module.
  */
 
+:root {
+  /*
+   * Color Palette.
+   */
+  /* Secondary. */
+  /* Variations. */ /* 5% darker than base. */ /* 10% darker than base. */ /* 10% darker than base. */ /* 20% darker than base. */ /* 5% darker than base. */ /* 10% darker than base. */ /* 5% darker than base. */ /* 10% darker than base. */ /* 5% darker than base. */ /* 10% darker than base. */
+  /*
+   * Base.
+   */
+  /*
+   * Typography.
+   */ /* 1rem = 16px if font root is 100% ands browser defaults are used. */ /* ~32px */ /* ~29px */ /* ~26px */ /* ~23px */ /* ~20px */ /* 18px */ /* ~14px */ /* ~13px */ /* ~11px */
+  /**
+   * Spaces.
+   */ /* 3 * 16px = 48px */ /* 1.5 * 16px = 24px */ /* 1 * 16px = 16px */ /* 0.75 * 16px = 12px */ /* 0.5 * 16px = 8px */
+  /*
+   * Common.
+   */
+  /*
+   * Inputs.
+   */ /* Absolute zero with opacity. */ /* Davy's grey with 0.6 opacity. */ /* Light gray with 0.3 opacity on white bg. */ /* Old silver with 0.5 opacity on white bg. */ /* (1/8)em ~ 2px */ /* (1/16)em ~ 1px */ /* Font size is too big to use 1rem for extrasmall line-height */ /* 7px inside the form element label. */ /* 8px with the checkbox width of 19px */
+  /*
+   * Details.
+   */
+  /**
+   * Buttons.
+   */
+  /**
+   * jQuery.UI dropdown.
+   */ /* Light gray with 0.8 opacity. */ /* Text color with 0.1 opacity. */
+  /**
+   * Progress bar.
+   */
+  /**
+   * Tabledrag icon size.
+   */ /* 17px */
+  /**
+   * Ajax progress.
+   */
+  /**
+   * Breadcrumb.
+   */
+}
+
 .views-admin .links {
   margin: 0;
   list-style: none outside none;
@@ -19,15 +63,6 @@
 
 .views-admin a:hover {
   text-decoration: none;
-}
-
-.box-padding {
-  padding-right: 12px;
-  padding-left: 12px;
-}
-
-.box-margin {
-  margin: 12px 12px 0 12px;
 }
 
 .views-admin .icon {
@@ -100,6 +135,7 @@
 }
 
 .views-admin .icon.add {
+  margin-left: -3px;
   background-position: center 3px;
 }
 
@@ -368,14 +404,16 @@ td.group-title {
 
 .views-displays {
   padding-bottom: 36px;
-  border: 1px solid #ccc;
+  border-top: 1px solid rgba(212, 212, 218, 0.8);
+  border-right: 1px solid rgba(212, 212, 218, 0.8);
+  border-left: 1px solid rgba(212, 212, 218, 0.8);
 }
 
 .views-display-top {
   position: relative;
-  padding: 8px 8px 3px;
-  border-bottom: 1px solid #ccc;
-  background-color: #e1e2dc;
+  padding: 0.75rem 0.5rem calc(0.75rem - 5px);
+  border-bottom: 1px solid rgba(212, 212, 218, 0.8);
+  background-color: #f3f4f9;
 }
 
 .views-display-top .tabs {
@@ -409,11 +447,11 @@ td.group-title {
 
 .form-edit .form-actions {
   margin-top: 0;
-  padding: 8px 12px;
-  border-right: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
-  border-left: 1px solid #ccc;
-  background-color: #e1e2dc;
+  padding: 0.75rem 1rem;
+  border-right: 1px solid rgba(212, 212, 218, 0.8);
+  border-bottom: 1px solid rgba(212, 212, 218, 0.8);
+  border-left: 1px solid rgba(212, 212, 218, 0.8);
+  background-color: #f3f4f9;
 }
 
 .views-displays .tabs.secondary {
@@ -539,20 +577,20 @@ td.group-title {
 }
 
 .edit-display-settings {
-  margin: 12px 12px 0 12px;
+  margin: 1rem 1rem 0 1rem;
 }
 
 .edit-display-settings-top.views-ui-display-tab-bucket {
   position: relative;
   margin: 0 0 15px 0;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  border: 1px solid #f3f3f3;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border: 1px solid rgba(212, 212, 218, 0.8);
   line-height: 20px;
 }
 
 .views-display-column {
-  border: 1px solid #f3f3f3;
+  border: 1px solid rgba(212, 212, 218, 0.8);
 }
 
 .views-display-column + .views-display-column {
@@ -615,7 +653,7 @@ td.group-title {
   position: relative;
   margin: 0;
   padding-top: 4px;
-  border-bottom: 1px solid #f3f3f3;
+  border-bottom: 1px solid rgba(212, 212, 218, 0.8);
   line-height: 20px;
 }
 
@@ -627,14 +665,17 @@ td.group-title {
   border-top: medium none;
 }
 
-.views-ui-display-tab-bucket__title,
+.views-ui-display-tab-bucket__title {
+  padding: 10px 6px 11px;
+}
+
 .views-ui-display-tab-bucket > .views-display-setting {
-  padding: 3px 6px 4px;
+  padding: 5px 6px 6px;
 }
 
 .views-ui-display-tab-bucket__title {
   margin: 0;
-  font-size: small;
+  font-size: 0.889rem;
 }
 
 .views-ui-display-tab-bucket.access {
@@ -681,7 +722,7 @@ td.group-title {
 }
 
 .views-ui-display-tab-bucket .views-display-setting:nth-of-type(even) {
-  background-color: #f3f5ee;
+  background-color: #f3f4f9;
 }
 
 .views-ui-display-tab-actions.views-ui-display-tab-bucket .views-display-setting {
@@ -968,24 +1009,24 @@ td.group-title {
 
 .views-display-top .dropbutton-wrapper {
   position: absolute;
-  top: 5px;
-  right: 4px; /* LTR */
+  top: 14px;
+  right: 25px; /* LTR */
 }
 
 [dir="rtl"] .views-display-top .dropbutton-wrapper {
   right: auto;
-  left: 4px;
+  left: 25px;
 }
 
 .views-ui-display-tab-bucket .dropbutton-wrapper {
   position: absolute;
-  top: 3px;
-  right: 3px; /* LTR */
+  top: 9px;
+  right: 8px; /* LTR */
 }
 
 [dir="rtl"] .views-ui-display-tab-bucket .dropbutton-wrapper {
   right: auto;
-  left: 3px;
+  left: 8px;
 }
 
 .views-list-section {

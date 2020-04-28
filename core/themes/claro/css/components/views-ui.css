@@ -294,7 +294,7 @@ details.fieldset-no-legend {
 
 .views-tabs a {
   display: inline-block;
-  padding: 3px 7px;
+  padding: 10px;
   border: 1px solid #cbcbcb;
   border-radius: 7px;
   font-size: small;
@@ -305,7 +305,7 @@ details.fieldset-no-legend {
 
 .views-tabs li.is-active a.is-active.error,
 .views-tabs .error {
-  padding: 1px 6px;
+  padding: 8px;
   border: 2px solid #ed541d;
 }
 
