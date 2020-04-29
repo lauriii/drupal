@@ -339,10 +339,6 @@ details.fieldset-no-legend {
  * These are the individual "buckets," or boxes, inside the display settings area
  */
 
-.views-ui-display-tab-bucket h3 {
-  text-transform: uppercase;
-}
-
 .views-ui-display-tab-bucket .links {
   padding: 2px 6px 4px;
 }
