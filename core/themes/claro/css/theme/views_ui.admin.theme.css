@@ -588,12 +588,8 @@ td.group-title {
   margin: 0 0 15px 0;
   padding-top: 8px;
   padding-bottom: 8px;
-  border: 1px solid rgba(212, 212, 218, 0.8);
+  border-bottom: 1px solid rgba(212, 212, 218, 0.8);
   line-height: 20px;
-}
-
-.views-display-column {
-  border: 1px solid rgba(212, 212, 218, 0.8);
 }
 
 .views-display-column + .views-display-column {
@@ -636,9 +632,9 @@ td.group-title {
 
 /* These are the individual "buckets," or boxes, inside the display settings area */
 
-.views-ui-display-tab-bucket {
+.views-ui-display-tab-bucket.views-ui-display-tab-bucket {
   position: relative;
-  margin: 0;
+  margin: 0 0 0.5rem;
   padding-top: 4px;
   border-bottom: 1px solid rgba(212, 212, 218, 0.8);
   line-height: 20px;
@@ -687,10 +683,6 @@ td.group-title {
   padding: 0.5rem 0.75rem;
   color: #666;
   font-size: 0.889rem;
-}
-
-.views-ui-display-tab-bucket .views-display-setting:nth-of-type(even) {
-  background-color: #f3f4f9;
 }
 
 .views-ui-display-tab-actions.views-ui-display-tab-bucket .views-display-setting {
