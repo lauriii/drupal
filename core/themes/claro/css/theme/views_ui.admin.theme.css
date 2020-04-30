@@ -665,17 +665,13 @@ td.group-title {
   border-top: medium none;
 }
 
-.views-ui-display-tab-bucket__title {
-  padding: 0.5rem 0.5rem;
-}
-
-.views-ui-display-tab-bucket > .views-display-setting {
-  padding: 5px 0.5rem 6px;
+.views-ui-display-tab-bucket__header {
+  padding: 0.5rem 0.75rem calc(0.5rem + 2px);
 }
 
 .views-ui-display-tab-bucket__title {
   margin: 0;
-  font-size: 0.889rem;
+  font-size: 1rem;
 }
 
 .views-ui-display-tab-bucket.access {
@@ -684,15 +680,6 @@ td.group-title {
 
 .views-ui-display-tab-bucket.page-settings {
   border-bottom: medium none;
-}
-
-.views-ui-display-tab-setting > span {
-  margin-left: calc(0.5rem - 6px); /* LTR */
-}
-
-[dir="rtl"] .views-ui-display-tab-setting > span {
-  margin-right: calc(0.5rem - 6px);
-  margin-left: 0;
 }
 
 /** Applies an overridden(italics) font style to overridden buckets.
@@ -710,9 +697,9 @@ td.group-title {
 /* This is each row within one of the "boxes." */
 
 .views-ui-display-tab-bucket .views-display-setting {
-  padding-bottom: 2px;
+  padding: 0.5rem 0.75rem;
   color: #666;
-  font-size: 12px;
+  font-size: 0.889rem;
 }
 
 .views-ui-display-tab-bucket .views-display-setting:nth-of-type(even) {
@@ -729,12 +716,17 @@ td.group-title {
 }
 
 .views-display-setting .label {
-  margin-right: 3px; /* LTR */
+  margin-right: 0.5rem; /* LTR */
 }
 
 [dir="rtl"] .views-display-setting .label {
   margin-right: 0;
-  margin-left: 3px;
+  margin-left: 0.5rem;
+}
+
+.label--separator.label--separator {
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
 }
 
 .views-edit-view {
@@ -851,6 +843,10 @@ td.group-title {
 [dir="rtl"] .views-ui-dialog details .item-list {
   padding-right: 2em;
   padding-left: 0;
+}
+
+.views-display-columns .details-wrapper {
+  margin: 0;
 }
 
 .views-ui-rearrange-filter-form table {
@@ -1014,23 +1010,23 @@ td.group-title {
 
 .views-ui-display-tab-bucket .dropbutton-wrapper {
   position: absolute;
-  top: 7px;
-  right: 7px; /* LTR */
+  top: 0.5rem;
+  right: 0.75rem; /* LTR */
 }
 
 [dir="rtl"] .views-ui-display-tab-bucket .dropbutton-wrapper {
   right: auto;
-  left: 6px;
+  left: 0.75rem;
 }
 
 .edit-display-settings-top.views-ui-display-tab-bucket .dropbutton-wrapper {
-  top: 9px;
-  right: 9px; /* LTR */
+  top: 0.8125rem;
+  right: 0.75rem; /* LTR */
 }
 
 [dir="rtl"] .edit-display-settings-top.views-ui-display-tab-bucket .dropbutton-wrapper {
   right: auto;
-  left: 9px;
+  left: 0.75rem;
 }
 
 .views-list-section {
@@ -1040,4 +1036,28 @@ td.group-title {
 .form-textarea-wrapper,
 .form-item-options-content {
   width: 100%;
+}
+
+/**
+ * Styles on devices with touchevents.
+ */
+
+html:not(.no-touchevents) .views-ui-display-tab-bucket__header--actions {
+  padding: 1.5rem 0.5rem;
+}
+
+html:not(.no-touchevents) .edit-display-settings-top.views-ui-display-tab-bucket {
+  padding: 1rem 0.5rem;
+}
+
+html:not(.no-touchevents) .views-display-top .dropbutton-wrapper {
+  top: 6px;
+}
+
+html:not(.no-touchevents) .views-ui-display-tab-bucket .dropbutton-wrapper {
+  top: 11px;
+}
+
+html:not(.no-touchevents) .edit-display-settings-top.views-ui-display-tab-bucket .dropbutton-wrapper {
+  top: 5px;
 }
