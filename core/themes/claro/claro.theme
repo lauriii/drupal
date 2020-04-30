@@ -1471,3 +1471,14 @@ function claro_preprocess_links__media_library_menu(array &$variables) {
     }
   }
 }
+
+function claro_preprocess_views_ui_rearrange_filter_form(&$variables) {
+  foreach ($variables['table']['#rows'] as &$row) {
+    // Remove the container-inline class from the operator table cell.
+    if (isset($row['data'][0]['class'])) {
+      foreach (array_keys($row['data'][0]['class'], 'container-inline', true) as $key) {
+        unset($row['data'][0]['class'][$key]);
+      }
+    }
+  }
+}
