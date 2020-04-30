@@ -2,6 +2,8 @@
  * Views styling
  */
 
+@import "../base/variables.pcss.css";
+
 /* @group Forms */
 
 /**
@@ -178,9 +180,34 @@ details.fieldset-no-legend {
   border-right: 1px solid #bfbfbf;
   border-left: 0 none;
 }
+
 .views-tabs .open > a {
   position: relative;
   z-index: 51;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+/* Using only the green outline and excluding the white allows the action list
+ * to appear as if it is part of the `Add` button, without the focus outline
+ * disrupting it.
+ */
+.views-tabs .open > a:focus {
+  box-shadow: 0 0 0 3px #26a769;
+}
+
+/* This hides the border where the `Add` button and the action list meet */
+.views-tabs .open > a:after {
+  position: absolute;
+  bottom: -0.25rem;
+  left: 0;
+  width: 100%;
+  height: 0.25rem;
+  content: "";
+  background-color: #fff;
+}
+.views-tabs .open > a:focus:after {
+  width: calc(100% + 0.3rem);
 }
 .views-tabs .views-display-deleted-link {
   text-decoration: line-through;
@@ -191,7 +218,7 @@ details.fieldset-no-legend {
 .views-tabs .action-list {
   position: absolute;
   z-index: 50;
-  top: 23px;
+  top: 37px;
   left: 0; /* LTR */
   margin: 0;
 }
@@ -203,18 +230,18 @@ details.fieldset-no-legend {
   display: block;
 }
 
-.views-tab a:hover > .icon.add {
-  background-position: center -25px;
+.views-tab a:hover > .icon.add,
+.views-tabs a:hover > .icon.add {
+  background-position: center -23.8px;
 }
 
 .views-tab .open > a {
   border-radius: 7px 7px 0 0;
 }
 
-.views-tab .open > a:hover,
-.views-tab .open > a:focus {
+.views-tab .open > a:hover {
   color: #008bcb;
-  background-color: #f1f1f1;
+  background-color: var(--color-whitesmoke);
 }
 
 .views-tab .action-list li:first-child {
@@ -289,47 +316,55 @@ details.fieldset-no-legend {
 }
 .views-tabs .open > a {
   position: relative;
-  border-bottom: 1px solid transparent;
-  background-color: #f1f1f1;
+  border-bottom: none;
+  background-color: #fff;
 }
 .views-tabs .open > a:hover {
   color: #0074bd;
-  background-color: #f1f1f1;
+  background-color: #fff;
 }
 .views-tabs .action-list li {
-  padding: 2px 9px;
   border-width: 0 1px;
   border-style: solid;
   border-color: #cbcbcb;
-  background-color: #f1f1f1;
+  background-color: #fff;
 }
 .views-tabs .action-list li:first-child {
+  padding-top: 0.4rem;
   border-width: 1px 1px 0;
-}
-.views-displays .action-list li:last-child {
-  border-width: 0 1px 1px;
-}
-.views-tabs .action-list li:last-child {
-  border-width: 0 1px 1px;
-}
-.views-tabs .action-list input.form-submit {
-  margin: 0;
-  padding: 0;
-  border: medium none;
-  background: none repeat scroll 0 0 transparent;
-}
-.views-tabs .action-list input.form-submit:hover {
-  box-shadow: none;
-}
-.views-tabs .action-list li:hover {
-  background-color: #ddd;
+  border-top-right-radius: var(--button-border-radius-size);
 }
 
-.views-tabs a:hover > .icon.add {
-  background-position: center -25px;
+.views-tabs .action-list li:last-child,
+.views-displays .action-list li:last-child {
+  padding-bottom: 0.4rem;
+  border-width: 0 1px 1px;
+  border-bottom-right-radius: var(--button-border-radius-size);
+  border-bottom-left-radius: var(--button-border-radius-size);
 }
+
 .views-tabs .open a:hover > .icon.add {
-  background-position: center 3px;
+  background-position: center 4.2px;
+}
+
+.views-tabs__action-list-button {
+  width: 100%;
+  text-align: left;
+  border: medium none;
+  border-radius: 0;
+  background: none repeat scroll 0 0 transparent;
+  font-weight: normal;
+}
+.views-tabs__action-list-button.button--small {
+  margin: 0;
+  padding: 2px 9px;
+}
+.views-tabs__action-list-button.button--small:hover {
+  background-color: var(--color-whitesmoke);
+}
+
+.views-tabs__action-list-button:not(:focus) {
+  box-shadow: none;
 }
 
 /* @end */

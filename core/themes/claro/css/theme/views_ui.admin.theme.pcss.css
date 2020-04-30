@@ -72,13 +72,13 @@
 }
 .views-admin .icon.add {
   margin-left: -3px;
-  background-position: center 3px;
+  background-position: center 4.2px;
 }
 .views-admin a.icon.add {
-  background-position: center 3px, left top; /* LTR */
+  background-position: center 4.2px, left top; /* LTR */
 }
 [dir="rtl"] .views-admin a.icon.add {
-  background-position: center 3px, right top;
+  background-position: center 4.2px, right top;
 }
 .views-admin .icon.delete {
   background-position: center -52px;
