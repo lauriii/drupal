@@ -575,7 +575,7 @@ td.group-title {
 .views-filterable-options-controls select {
   width: 100%;
 }
-.views-ui-dialog .ui-dialog-content {
+.views-ui-dialog.views-ui-dialog > .ui-dialog-content {
   padding: 0;
 }
 .views-ui-dialog .views-filterable-options {
@@ -592,8 +592,8 @@ td.group-title {
   padding: 6px 16px;
 }
 .views-ui-dialog .views-override:not(:empty) {
-  padding: 8px 13px;
-  background-color: #f3f4ee;
+  padding: var(--space-l) var(--space-s);
+  background-color: var(--color-whitesmoke);
 }
 .views-ui-dialog.views-ui-dialog-scroll .ui-dialog-titlebar {
   border: none;

@@ -760,7 +760,7 @@ td.group-title {
   width: 100%;
 }
 
-.views-ui-dialog .ui-dialog-content {
+.views-ui-dialog.views-ui-dialog > .ui-dialog-content {
   padding: 0;
 }
 
@@ -782,8 +782,8 @@ td.group-title {
 }
 
 .views-ui-dialog .views-override:not(:empty) {
-  padding: 8px 13px;
-  background-color: #f3f4ee;
+  padding: 1.5rem 0.75rem;
+  background-color: #f3f4f9;
 }
 
 .views-ui-dialog.views-ui-dialog-scroll .ui-dialog-titlebar {
