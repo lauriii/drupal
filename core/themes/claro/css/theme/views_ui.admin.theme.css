@@ -600,7 +600,7 @@ td.group-title {
   margin-top: 0;
 }
 
-.view-preview-form .form-item-view-args,
+.view-preview-form .form-item--view-args,
 .view-preview-form .form-actions {
   margin-top: 5px;
 }
@@ -609,37 +609,21 @@ td.group-title {
   font-size: 1em;
 }
 
+.view-preview-form .form-item--view-args {
+  margin-top: 1rem;
+}
+
 .view-preview-form .arguments-preview,
-.view-preview-form .form-item-view-args {
-  margin-left: 10px; /* LTR */
+.view-preview-form .form-item--view-args {
+  margin-right: 1rem;
+  margin-left: 1rem;
 }
 
-[dir="rtl"] .view-preview-form .arguments-preview,
-[dir="rtl"] .view-preview-form .form-item-view-args {
-  margin-right: 10px;
-  margin-left: 0;
-}
-
-.view-preview-form .form-item-view-args label {
-  float: left; /* LTR */
-  height: 6ex;
-  margin-right: 0.75em; /* LTR */
-  font-weight: normal;
-}
-
-[dir="rtl"] .view-preview-form .form-item-view-args label {
-  float: right;
-  margin-right: 0.2em;
-  margin-left: 0.75em;
-}
-
-.form-item-live-preview,
-.form-item-view-args,
 .preview-submit-wrapper {
   display: inline-block;
 }
 
-.form-item-live-preview,
+.form-item--live-preview,
 .view-preview-form .form-actions {
   vertical-align: top;
 }
@@ -912,26 +896,26 @@ td.group-title {
   margin-top: 0;
   padding: 8px 12px;
   border-bottom: 1px solid #ccc;
-  background-color: #e1e2dc;
+  background-color: #f3f4f9;
 }
 
-.view-preview-form .form-item-live-preview {
+.view-preview-form .form-item--live-preview {
   position: absolute;
-  top: 3px;
-  right: 12px;
+  top: 0.6875rem;
+  right: 0.75rem;
   margin-top: 2px;
   margin-left: 2px; /* LTR */
 }
 
-[dir="rtl"] .view-preview-form .form-item-live-preview {
+[dir="rtl"] .view-preview-form .form-item--live-preview {
   right: auto;
-  left: 12px;
+  left: 0.75rem;
   margin-right: 2px;
   margin-left: 0;
 }
 
 .views-live-preview {
-  padding: 12px;
+  padding: 1rem;
 }
 
 .views-live-preview .views-query-info {
@@ -949,7 +933,7 @@ td.group-title {
 }
 
 .views-live-preview .view > * {
-  margin-top: 18px;
+  margin-top: 1rem;
 }
 
 .views-live-preview .preview-section {
@@ -972,17 +956,17 @@ td.group-title {
   margin: 10px 0;
   border-spacing: 0;
   border-collapse: separate;
-  border-color: #ddd;
+  border-color: #fff;
 }
 
 .views-query-info table tr {
-  background-color: #f9f9f9;
+  background-color: #f3f4f9;
 }
 
 .views-query-info table th,
 .views-query-info table td {
-  padding: 4px 10px;
-  color: #666;
+  padding: 0.5rem 1.5rem;
+  font-size: 0.889rem;
 }
 
 .messages {
