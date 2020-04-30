@@ -194,8 +194,8 @@ details.fieldset-no-legend {
 
 /* @group Tables */
 
-.views-ui-rearrange-filter-form table td,
-.views-ui-rearrange-filter-form table th {
+.views-ui-rearrange-filter-form td,
+.views-ui-rearrange-filter-form th {
   vertical-align: top;
 }
 
@@ -481,6 +481,18 @@ details.fieldset-no-legend {
 
 /* @group Rearrange filter criteria */
 
+.views-ui-rearrange-filter-form tr {
+  border-bottom: 0;
+}
+
+.views-ui-rearrange-filter-form tr:first-of-type {
+  border-top: 0.0625rem solid #d4d4d8;
+}
+
+.views-ui-rearrange-filter-form tr:not(.draggable):hover {
+  background: inherit;
+}
+
 .views-ui-rearrange-filter-form .action-links {
   float: left;
   margin: 0 0 1em;
@@ -489,11 +501,11 @@ details.fieldset-no-legend {
 
 .views-ui-rearrange-filter-form .tabledrag-toggle-weight-wrapper {
   float: right;
-  margin-bottom: 1em;
+  margin: 0 0 1em 0;
 }
 
-.views-ui-rearrange-filter-form table {
-  border: medium none;
+.views-ui-rearrange-filter-form .tabledrag-cell {
+  position: relative;
 }
 
 .views-ui-rearrange-filter-form [id^="views-row"] {
@@ -520,6 +532,14 @@ details.fieldset-no-legend {
 
 .views-ui-rearrange-filter-form tr.drag-previous td {
   background-color: #ffb !important;
+}
+
+.views-ui-rearrange-filter-form .draggable td {
+  vertical-align: middle;
+}
+
+.views-ui-rearrange-filter-form .draggable .form-type--checkbox {
+  margin: 0;
 }
 
 /* @end */
