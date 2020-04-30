@@ -43,6 +43,9 @@
    * jQuery.UI dropdown.
    */ /* Light gray with 0.8 opacity. */ /* Text color with 0.1 opacity. */
   /**
+   * jQuery.UI dialog.
+   */
+  /**
    * Progress bar.
    */
   /**
@@ -817,15 +820,17 @@ td.group-title {
 
 .views-ui-dialog .views-progress-indicator {
   position: absolute;
-  top: 32px;
-  right: 10px; /* LTR */
+  z-index: 1;
+  top: 0;
+  right: 4rem; /* LTR */
   color: #fff;
-  font-size: 11px;
+  font-size: 0.702rem;
+  line-height: 4rem;
 }
 
 [dir="rtl"] .views-ui-dialog .views-progress-indicator {
   right: auto;
-  left: 10px;
+  left: 4rem;
 }
 
 .views-ui-dialog .views-progress-indicator:before {
