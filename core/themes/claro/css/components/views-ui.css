@@ -98,8 +98,32 @@ details.fieldset-no-legend {
   margin-right: 0;
 }
 
-/* @group Dependent options
+/*
+ * Overrides of form element styling within dialog
  */
+
+.views-ui-dialog .form-item {
+  margin-top: 0;
+}
+
+.views-ui-dialog .form-type--boolean {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.views-ui-dialog .form-type--boolean .form-boolean {
+  top: 0;
+  float: none;
+  margin: 0;
+  transform: none;
+}
+
+.views-ui-dialog .form-boolean-group .form-type--boolean {
+  margin-top: 0.4em;
+  margin-bottom: 0.4em;
+}
+
+/* @group Dependent options */
 
 /* This is necessary to supercede the Claro .form-item
  * reset declaration that sets the margin to zero.
@@ -600,3 +624,42 @@ details.fieldset-no-legend {
 }
 
 /* @end */
+
+.views-config-group-region {
+  display: table;
+  margin: 1rem 0;
+  border: 0.0625rem solid #d4d4d8;
+  border-collapse: collapse;
+}
+
+.views-config-group-region .views-group-box {
+  display: table-cell;
+  padding: 1.5rem;
+  border: 0.0625rem solid #d4d4d8;
+}
+
+.views-group-box--operator {
+  position: relative;
+}
+
+.views-group-box--operator:after {
+  position: absolute;
+  z-index: 1;
+  top: 3.4rem;
+  right: -1rem; /* LTR */
+  padding: 0 0.3rem 0.3rem 0.4rem; /* LTR */
+  content: ">";
+  color: #82828c;
+  border: 0.0625rem solid #d4d4d8;
+  background: #fff;
+  font-size: 2.027rem;
+  font-weight: bold;
+  line-height: 2.027rem;
+}
+
+[dir="rtl"] .views-group-box--operator:after {
+  right: auto;
+  left: -1rem;
+  padding-right: 0.4rem;
+  padding-left: 0.3rem;
+}
