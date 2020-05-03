@@ -1483,9 +1483,6 @@ function claro_preprocess_views_ui_rearrange_filter_form(array &$variables) {
   }
 }
 
-function claro_preprocess_views_ui_build_group_filter_form(array &$variables) {
-  $stop = 'here';
-}
 /**
  * Implements hook_form_FORM_ID_alter() for \Drupal\node\NodeForm.
  */
