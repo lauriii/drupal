@@ -98,12 +98,19 @@ details.fieldset-no-legend {
   margin-right: 0;
 }
 
+.views-ui-dialog .form--flex {
+  display: flex;
+  overflow: hidden;
+  flex-wrap: wrap;
+}
+
 /*
  * Overrides of form element styling within dialog
  */
 
 .views-ui-dialog .form-item {
-  margin-top: 0;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .views-ui-dialog .form-type--boolean {
@@ -114,13 +121,31 @@ details.fieldset-no-legend {
 .views-ui-dialog .form-type--boolean .form-boolean {
   top: 0;
   float: none;
-  margin: 0;
+  margin: 0 0.25rem 0 0; /* LTR */
   transform: none;
+}
+
+[dir="rtl"] .views-ui-dialog .form-type--boolean .form-boolean {
+  margin-right: 0;
+  margin-left: 0.25rem;
 }
 
 .views-ui-dialog .form-boolean-group .form-type--boolean {
   margin-top: 0.4em;
   margin-bottom: 0.4em;
+}
+
+.views-ui-dialog .form-item:first-of-type.description {
+  margin: 0 0 1.5rem 0;
+  padding-bottom: 0.75rem;
+  border-bottom: 0.0625rem solid #d4d4d8;
+  font-weight: bold;
+}
+
+/* So "remove" link appears next to the checkbox. */
+
+.views-ui-dialog .draggable .form-type--checkbox {
+  display: inline-block;
 }
 
 /* @group Dependent options */
@@ -525,7 +550,6 @@ details.fieldset-no-legend {
 
 .views-ui-rearrange-filter-form .tabledrag-toggle-weight-wrapper {
   float: right;
-  margin: 0 0 1em 0;
 }
 
 .views-ui-rearrange-filter-form .tabledrag-cell {
@@ -627,7 +651,7 @@ details.fieldset-no-legend {
 
 .views-config-group-region {
   display: table;
-  margin: 1rem 0;
+  margin: 1.5rem 0;
   border: 0.0625rem solid #d4d4d8;
   border-collapse: collapse;
 }
@@ -645,7 +669,7 @@ details.fieldset-no-legend {
 .views-group-box--operator:after {
   position: absolute;
   z-index: 1;
-  top: 3.4rem;
+  top: 3.9rem;
   right: -1rem; /* LTR */
   padding: 0 0.3rem 0.3rem 0.4rem; /* LTR */
   content: ">";

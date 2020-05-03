@@ -1519,10 +1519,24 @@ function claro_form_views_ui_config_item_form_alter(&$form, FormStateInterface $
 }
 
 function claro_form_views_ui_add_handler_form_alter(&$form, FormStateInterface $form_state) {
+  // Remove container-inline class to allow more control over styling.
   if (isset($form['selected']['#attributes']['class'])) {
     foreach (array_keys($form['selected']['#attributes']['class'], 'container-inline', true) as $key) {
       unset($form['selected']['#attributes']['class'][$key]);
     }
   }
+  if (isset($form['override'])) {
+    // Replace form--inline class so positioning doesn't depend on floats.
+    if (isset($form['override']['#prefix'])) {
+      $form['override']['#prefix'] = str_replace('form--inline', 'form--flex', $form['override']['#prefix']);
+    }
+    // Move all form elements in controls to its parent. #flatten seems like a
+    // better solution, but didn't work (perhaps it has to happen earlier?).
+    if (isset($form['override']['controls'])) {
+      foreach (Element::children($form['override']['controls']) as $key) {
+        $form['override']["controls_$key"] = $form['override']['controls'][$key];
+      }
+      unset($form['override']['controls']);
+    }
+  }
 }
-
