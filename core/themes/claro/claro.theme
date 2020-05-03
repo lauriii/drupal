@@ -20,6 +20,7 @@ use Drupal\media\MediaForm;
 use Drupal\file\FileInterface;
 use Drupal\views\Form\ViewsForm;
 use Drupal\views\ViewExecutable;
+use Drupal\views_ui\Form\Ajax\ViewsFormInterface;
 
 /**
  * Implements hook_theme_suggestions_HOOK_alter() for form_element.
@@ -367,6 +368,12 @@ function claro_form_alter(array &$form, FormStateInterface $form_state, $form_id
   // Make entity forms delete link use the action-link component.
   if (isset($form['actions']['delete']['#type']) && $form['actions']['delete']['#type'] === 'link' && !empty($build_info['callback_object']) && $build_info['callback_object'] instanceof EntityForm) {
     $form['actions']['delete'] = _claro_convert_link_to_action_link($form['actions']['delete'], 'trash', 'default', 'danger');
+  }
+
+  if (($form_object instanceof ViewsForm || $form_object instanceof ViewsFormInterface) && isset($form['override']['#prefix'])) {
+    // Replace form--inline class so positioning of override form elements don't
+    // have to depend on floats.
+    $form['override']['#prefix'] = str_replace('form--inline', 'form--flex', $form['override']['#prefix']);
   }
 
   if ($form_object instanceof ViewsForm && strpos($form_object->getBaseFormId(), 'views_form_media_library') === 0) {
@@ -1525,18 +1532,12 @@ function claro_form_views_ui_add_handler_form_alter(&$form, FormStateInterface $
       unset($form['selected']['#attributes']['class'][$key]);
     }
   }
-  if (isset($form['override'])) {
-    // Replace form--inline class so positioning doesn't depend on floats.
-    if (isset($form['override']['#prefix'])) {
-      $form['override']['#prefix'] = str_replace('form--inline', 'form--flex', $form['override']['#prefix']);
+  // Move all form elements in controls to its parent. #flatten seems like a
+  // better solution, but didn't work (perhaps it has to happen earlier?).
+  if (isset($form['override']['controls'])) {
+    foreach (Element::children($form['override']['controls']) as $key) {
+      $form['override']["controls_$key"] = $form['override']['controls'][$key];
     }
-    // Move all form elements in controls to its parent. #flatten seems like a
-    // better solution, but didn't work (perhaps it has to happen earlier?).
-    if (isset($form['override']['controls'])) {
-      foreach (Element::children($form['override']['controls']) as $key) {
-        $form['override']["controls_$key"] = $form['override']['controls'][$key];
-      }
-      unset($form['override']['controls']);
-    }
+    unset($form['override']['controls']);
   }
 }
