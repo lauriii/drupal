@@ -148,6 +148,18 @@ details.fieldset-no-legend {
   display: inline-block;
 }
 
+.views-ui-dialog .form-element {
+  min-height: 1px;
+  font-size: 0.9rem;
+  padding: calc(0.6rem - 1px) calc(0.8rem - 1px);
+  line-height: 1.2rem;
+}
+
+.views-ui-dialog .form-element--type-select {
+  padding-right: calc(2rem + 2px);
+  background-position: 100% 56%;
+}
+
 /* @group Dependent options */
 
 /* This is necessary to supercede the Claro .form-item
