@@ -150,8 +150,8 @@ details.fieldset-no-legend {
 
 .views-ui-dialog .form-element {
   min-height: 1px;
-  font-size: 0.9rem;
   padding: calc(0.6rem - 1px) calc(0.8rem - 1px);
+  font-size: 0.9rem;
   line-height: 1.2rem;
 }
 
