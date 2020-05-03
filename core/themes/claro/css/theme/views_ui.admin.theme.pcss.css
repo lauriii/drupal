@@ -545,9 +545,6 @@ td.group-title {
   padding: 5px 8px;
   border-top: none;
 }
-.views-filterable-options {
-  border-top: 1px solid #ccc;
-}
 .filterable-option .form-item {
   margin-top: 0;
   margin-bottom: 0;
@@ -577,15 +574,29 @@ td.group-title {
 .views-ui-dialog .views-filterable-options {
   margin-bottom: 10px;
 }
-.views-ui-dialog .views-add-form-selected.container-inline {
-  padding: 0;
+[id^="views-ui-add-handler-form"] .scroll {
+  padding-top: 0;
+  padding-bottom: 0;
 }
-.views-ui-dialog .views-add-form-selected.container-inline > div {
+
+.views-ui-dialog .views-add-form-selected.views-offset-bottom {
+  padding: 0 1rem;
+  border: 0;
+}
+.views-ui-dialog .views-add-form-selected > div {
   display: block;
+  margin: 0;
+  padding: 0.3rem 0.8rem;
+  border: 1px solid #dedfe4;
+  border-radius: 2px 2px 0 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 .views-ui-dialog .form-item-selected {
   margin: 0;
   padding: 6px 16px;
+}
+.views-ui-dialog .views-add-form-selected .views-selected-options {
+  display: inline;
 }
 .views-ui-dialog .views-override:not(:empty) {
   padding: var(--space-l) var(--space-s);

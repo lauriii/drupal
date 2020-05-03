@@ -1517,3 +1517,12 @@ function claro_form_views_ui_config_item_form_alter(&$form, FormStateInterface $
     $form['options']['value']['#suffix'] = $form['options']['value']['#suffix'] . '</div>';
   }
 }
+
+function claro_form_views_ui_add_handler_form_alter(&$form, FormStateInterface $form_state) {
+  if (isset($form['selected']['#attributes']['class'])) {
+    foreach (array_keys($form['selected']['#attributes']['class'], 'container-inline', true) as $key) {
+      unset($form['selected']['#attributes']['class'][$key]);
+    }
+  }
+}
+
