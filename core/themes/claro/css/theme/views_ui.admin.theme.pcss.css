@@ -602,8 +602,18 @@ td.group-title {
   border: none;
 }
 .views-ui-dialog .views-offset-top:not(:empty) {
+  position: relative;
   padding: var(--space-l) var(--space-s) var(--space-xs) var(--space-s);
   background-color: var(--color-whitesmoke);
+}
+.views-ui-dialog .views-offset-top:not(:empty):after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  content: "";
+  background: linear-gradient(to bottom, rgba(80, 81, 86,0.11) 0%,rgba(18, 19, 20, 0.02) 49%,rgba(18, 19, 20, 0) 100%);
 }
 
 .views-ui-dialog .views-offset-top > * {
