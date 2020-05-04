@@ -89,9 +89,9 @@ details.fieldset-no-legend {
 
 .views-ui-dialog .form-element {
   min-height: 1px;
-  padding: calc(0.6rem - 1px) calc(0.8rem - 1px);
-  font-size: 0.9rem;
-  line-height: 1.2rem;
+  padding: 6px 15px 5px 6px;
+  font-size: var(--font-size-xs);
+  line-height: 150%;
 }
 .views-ui-dialog .form-element--type-select {
   padding-right: calc(2rem + 2px);
