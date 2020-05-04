@@ -603,7 +603,7 @@ td.group-title {
 }
 .views-ui-dialog .views-offset-top:not(:empty) {
   position: relative;
-  padding: var(--space-l) var(--space-s) var(--space-xs) var(--space-s);
+  padding: var(--space-m) var(--space-s) var(--space-xs) var(--space-s);
   background-color: var(--color-whitesmoke);
 }
 .views-ui-dialog .views-offset-top:not(:empty):after {

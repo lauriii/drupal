@@ -149,10 +149,10 @@ details.fieldset-no-legend {
 }
 
 .views-ui-dialog .form-element {
-  min-height: 1px;
-  padding: 6px 15px 5px 6px;
+  min-height: calc(2.3125rem - 2px); /* iOS. */
+  padding: calc(0.5rem - 2px) calc(1rem - 1px);
   font-size: 0.79rem;
-  line-height: 150%;
+  line-height: 1.3125rem;
 }
 
 .views-ui-dialog .form-element--type-select {

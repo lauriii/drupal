@@ -88,13 +88,13 @@ details.fieldset-no-legend {
 }
 
 .views-ui-dialog .form-element {
-  min-height: 1px;
-  padding: 6px 15px 5px 6px;
-  font-size: var(--font-size-xs);
-  line-height: 150%;
+  min-height: calc(((var(--input--small-padding-vertical) + var(--input-border-size)) * 2) + var(--input--small-line-height)); /* iOS. */
+  padding: var(--input--small-padding-vertical) var(--input--small-padding-horizontal);
+  font-size: var(--input--small-font-size);
+  line-height: var(--input--small-line-height);
 }
 .views-ui-dialog .form-element--type-select {
-  padding-right: calc(2rem + 2px);
+  padding-right: calc((var(--space-m) * 2) + var(--input-border-size) * 2);
   background-position: 100% 56%;
 }
 
