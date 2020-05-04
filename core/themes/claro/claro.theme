@@ -1500,8 +1500,8 @@ function claro_form_views_ui_config_item_form_alter(&$form, FormStateInterface $
 
   if ($type === 'filter') {
     // Remove clearfix classes from several elements. They add unwanted
-    // whitespaceare and are no longer needed because uses of `float:` in this
-    // form have been removed.
+    // whitespace and are no longer needed because uses of `float:` in this form
+    // have been removed.
     unset($form['options']['clear_markup_start']);
     unset($form['options']['clear_markup_end']);
     $form['options']['expose_button']['#prefix'] = str_replace('clearfix', '', $form['options']['expose_button']['#prefix']);
@@ -1514,6 +1514,7 @@ function claro_form_views_ui_config_item_form_alter(&$form, FormStateInterface $
     foreach(['views-left-30', 'views-left-40'] as $left_class) {
       if (strpos($form['options']['operator']['#prefix'], $left_class) !== FALSE) {
         $form['options']['operator']['#prefix'] = '<div class="views-config-group-region">' . str_replace($left_class, 'views-group-box--operator', $form['options']['operator']['#prefix']);
+        $form['options']['value']['#suffix'] = $form['options']['value']['#suffix'] . '</div>';
       }
     }
     foreach(['views-right-70', 'views-right-60'] as $right_class) {
@@ -1521,7 +1522,13 @@ function claro_form_views_ui_config_item_form_alter(&$form, FormStateInterface $
         $form['options']['value']['#prefix'] = str_replace($right_class, 'views-group-box--value', $form['options']['value']['#prefix']);
       }
     }
-    $form['options']['value']['#suffix'] = $form['options']['value']['#suffix'] . '</div>';
+    // If operator or value have no children, remove them from the render array
+    // so their prefixes and suffixes aren't added without any content.
+    foreach (['operator', 'value'] as $form_item) {
+      if (count($form['options'][$form_item]) === 2 && isset($form['options'][$form_item]['#prefix']) && $form['options'][$form_item]['#suffix']) {
+        unset($form['options'][$form_item]);
+      }
+    }
   }
 }
 
