@@ -235,47 +235,68 @@ details.fieldset-no-legend {
   border-right: 1px solid #bfbfbf;
   border-left: 0 none;
 }
-
-.views-tabs .open > a {
-  position: relative;
-  z-index: 51;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
-
-/* Using only the green outline and excluding the white allows the action list
- * to appear as if it is part of the `Add` button, without the focus outline
- * disrupting it.
- */
-.views-tabs .open > a:focus {
-  box-shadow: 0 0 0 3px #26a769;
-}
-
-/* This hides the border where the `Add` button and the action list meet */
-.views-tabs .open > a:after {
-  position: absolute;
-  bottom: -0.25rem;
-  left: 0;
-  width: 100%;
-  height: 0.25rem;
-  content: "";
-  background-color: #fff;
-}
-.views-tabs .open > a:focus:after {
-  width: calc(100% + 0.3rem);
-}
 .views-tabs .views-display-deleted-link {
   text-decoration: line-through;
 }
 .views-tabs .add {
   position: relative;
+  margin-top: calc(var(--input-border-size) * 2);
+}
+.views-tabs .add a {
+  padding: 9px 13px 7px 9px;
+  color: var(--color-davysgrey);
+  border: none;
+  border-radius: var(--base-border-radius);
+  background-color: transparent;
+  font-size: var(--font-size-base);
+  font-weight: 700;
+}
+
+/* Provide semi-highlighting button when tab navigating action list items */
+.views-tabs .add.open a:not(:focus) {
+  background-color: var(--color-white);
+  box-shadow: 0 0 2px #cbcbcb;
+}
+.views-tabs .add a::before {
+  display: inline-block;
+  width: 1em;
+  height: calc(1em - (var(--input-border-size) * 2));
+  content: "";
+  /* Copy of icon from .action-link--icon-plus */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' stroke-width='2' stroke='%23545560'%3E%3Cpath d='m3 8h10'/%3E%3Cpath d='m8 3v10'/%3E%3C/svg%3E");
+}
+.views-tabs .add a:hover {
+  color: var(--color-absolutezero-hover);
+  background-color: transparent;
+  box-shadow: 0 0 0 1px var(--color-davysgrey);
+}
+.views-tabs .add a:hover::before {
+  /* Copy of icon from .action-link--icon-plus:hover */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' stroke-width='2' stroke='%230036b1'%3E%3Cpath d='m3 8h10'/%3E%3Cpath d='m8 3v10'/%3E%3C/svg%3E");
+}
+.views-tabs .add a:active {
+  color: var(--color-absolutezero-active);
+  background-color: var(--color-bgblue-active);
+}
+.views-tabs .add a:active::before {
+  /* Copy of icon from .action-link--icon-plus:active */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' stroke-width='2' stroke='%2300309e'%3E%3Cpath d='m3 8h10'/%3E%3Cpath d='m8 3v10'/%3E%3C/svg%3E");
+}
+.views-tabs .add a:focus {
+  background-color: var(--color-bgblue-active);
+  box-shadow: 0 0 0 3px #26a769;
+}
+/* Hide core icon, added via JS that isn't accessible via theme function. */
+.views-tabs .add .icon.add {
+  display: none;
 }
 .views-tabs .action-list {
   position: absolute;
   z-index: 50;
-  top: 37px;
-  left: 0; /* LTR */
+  top: 38px;
+  left: -2px; /* LTR */
   margin: 0;
+  box-shadow: var(--details-box-shadow);
 }
 [dir="rtl"] .views-tabs .action-list {
   right: 0;
@@ -285,29 +306,9 @@ details.fieldset-no-legend {
   display: block;
 }
 
-.views-tab a:hover > .icon.add,
-.views-tabs a:hover > .icon.add {
-  background-position: center -23.8px;
-}
-
-.views-tab .open > a {
-  border-radius: 7px 7px 0 0;
-}
-
 .views-tab .open > a:hover {
   color: #008bcb;
   background-color: var(--color-whitesmoke);
-}
-
-.views-tab .action-list li:first-child {
-  border-radius: 0 7px 0 0; /* LTR */
-}
-[dir="rtl"] .views-tab .action-list li:first-child {
-  border-radius: 7px 0 0 0;
-}
-
-.views-tab .action-list li:last-child {
-  border-radius: 0 0 7px 7px;
 }
 
 .views-tab .action-list input.form-submit {
@@ -344,7 +345,7 @@ details.fieldset-no-legend {
 .views-tabs a {
   display: inline-block;
   padding: 10px;
-  border: 1px solid #cbcbcb;
+  border: var(--input-border-size) solid #cbcbcb;
   border-radius: 7px;
   font-size: small;
   line-height: 1.3333;
@@ -369,15 +370,6 @@ details.fieldset-no-legend {
   color: #fff;
   background-color: #555;
 }
-.views-tabs .open > a {
-  position: relative;
-  border-bottom: none;
-  background-color: #fff;
-}
-.views-tabs .open > a:hover {
-  color: #0074bd;
-  background-color: #fff;
-}
 .views-tabs .action-list li {
   border-width: 0 1px;
   border-style: solid;
@@ -385,11 +377,12 @@ details.fieldset-no-legend {
   background-color: #fff;
 }
 .views-tabs .action-list li:first-child {
-  padding-top: 0.4rem;
   border-width: 1px 1px 0;
-  border-top-right-radius: var(--button-border-radius-size);
+  border-radius: 0 var(--base-border-radius) 0 0; /* LTR */
 }
-
+[dir="rtl"] .views-tabs .action-list li:first-child {
+  border-radius: 0 0 0 var(--base-border-radius);
+}
 .views-tabs .action-list li:last-child,
 .views-displays .action-list li:last-child {
   padding-bottom: 0.4rem;
@@ -404,20 +397,24 @@ details.fieldset-no-legend {
 
 .views-tabs__action-list-button {
   width: 100%;
+  margin: 0;
+  padding: var(--space-s) var(--space-l);
   text-align: left;
   border: medium none;
   border-radius: 0;
   background: none repeat scroll 0 0 transparent;
   font-weight: normal;
 }
-.views-tabs__action-list-button.button--small {
+/* RTL required for precidence over core's styles. */
+[dir="rtl"] .views-tabs__action-list-button {
   margin: 0;
-  padding: 2px 9px;
 }
-.views-tabs__action-list-button.button--small:hover {
-  background-color: var(--color-whitesmoke);
+.views-tabs__action-list-button.button:hover,
+.views-tabs__action-list-button.button:focus {
+  color: var(--color-white);
+  background-color: var(--color-absolutezero);
 }
-
+/* Remove outline provided by default stying */
 .views-tabs__action-list-button:not(:focus) {
   box-shadow: none;
 }
