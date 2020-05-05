@@ -432,15 +432,13 @@ class AttachedAssetsTest extends KernelTestBase {
     \Drupal::state()->set('common_test.library_info_build_test', TRUE);
     $library_discovery->clearCachedDefinitions();
     $dynamic_library = $library_discovery->getLibraryByName('common_test', 'dynamic_library');
-    $this->assertTrue(is_array($dynamic_library));
-    if ($this->assertTrue(isset($dynamic_library['version']))) {
-      $this->assertSame('1.0', $dynamic_library['version']);
-    }
+    $this->assertIsArray($dynamic_library);
+    $this->assertArrayHasKey('version', $dynamic_library);
+    $this->assertSame('1.0', $dynamic_library['version']);
     // Make sure the dynamic library definition could be altered.
     // @see common_test_library_info_alter()
-    if ($this->assertTrue(isset($dynamic_library['dependencies']))) {
-      $this->assertSame(['core/jquery'], $dynamic_library['dependencies']);
-    }
+    $this->assertArrayHasKey('dependencies', $dynamic_library);
+    $this->assertSame(['core/jquery'], $dynamic_library['dependencies']);
   }
 
   /**
