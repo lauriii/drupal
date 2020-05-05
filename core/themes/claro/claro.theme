@@ -590,7 +590,6 @@ function claro_views_ui_display_top_alter(&$element) {
   if (isset($element['add_display'])) {
     foreach ($element['add_display'] as &$display_item) {
       if (isset($display_item['#type']) && in_array($display_item['#type'], ['submit', 'button']) ) {
-        $display_item['#button_type'] = 'small';
         $display_item['#attributes']['class'][] = 'views-tabs__action-list-button';
       }
     }
