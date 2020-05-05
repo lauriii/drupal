@@ -467,7 +467,6 @@ details.fieldset-no-legend {
   position: relative;
 }
 
-
 .views-ui-rearrange-filter-form [id^="views-row"] {
   border: medium none;
 }
@@ -565,8 +564,14 @@ details.fieldset-no-legend {
 }
 .views-config-group-region .views-group-box {
   display: table-cell;
-  padding: 1.5rem;
+  padding: var(--space-l);
   border: 0.0625rem solid var(--color-lightgray);
+}
+.views-config-group-region .views-group-box--operator {
+  padding-right: var(--space-xl);
+}
+.views-config-group-region .views-group-box--value {
+  padding-left: var(--space-xl);
 }
 
 .views-group-box--operator {

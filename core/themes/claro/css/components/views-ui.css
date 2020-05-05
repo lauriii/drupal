@@ -674,6 +674,14 @@ details.fieldset-no-legend {
   border: 0.0625rem solid #d4d4d8;
 }
 
+.views-config-group-region .views-group-box--operator {
+  padding-right: 3rem;
+}
+
+.views-config-group-region .views-group-box--value {
+  padding-left: 3rem;
+}
+
 .views-group-box--operator {
   position: relative;
 }
