@@ -240,22 +240,15 @@ details.fieldset-no-legend {
 }
 .views-tabs .add {
   position: relative;
-  margin-top: calc(var(--input-border-size) * 2);
 }
 .views-tabs .add a {
-  padding: 9px 13px 7px 9px;
+  padding: 9px 13px 9px 9px;
   color: var(--color-davysgrey);
   border: none;
   border-radius: var(--base-border-radius);
   background-color: transparent;
   font-size: var(--font-size-base);
   font-weight: 700;
-}
-
-/* Provide semi-highlighting button when tab navigating action list items */
-.views-tabs .add.open a:not(:focus) {
-  background-color: var(--color-white);
-  box-shadow: 0 0 2px #cbcbcb;
 }
 .views-tabs .add a::before {
   display: inline-block;
@@ -267,24 +260,22 @@ details.fieldset-no-legend {
 }
 .views-tabs .add a:hover {
   color: var(--color-absolutezero-hover);
-  background-color: transparent;
-  box-shadow: 0 0 0 1px var(--color-davysgrey);
+  background-color: var(--color-bgblue-hover);
 }
 .views-tabs .add a:hover::before {
   /* Copy of icon from .action-link--icon-plus:hover */
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' stroke-width='2' stroke='%230036b1'%3E%3Cpath d='m3 8h10'/%3E%3Cpath d='m8 3v10'/%3E%3C/svg%3E");
 }
-.views-tabs .add a:active {
-  color: var(--color-absolutezero-active);
-  background-color: var(--color-bgblue-active);
-}
-.views-tabs .add a:active::before {
-  /* Copy of icon from .action-link--icon-plus:active */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' stroke-width='2' stroke='%2300309e'%3E%3Cpath d='m3 8h10'/%3E%3Cpath d='m8 3v10'/%3E%3C/svg%3E");
-}
 .views-tabs .add a:focus {
   background-color: var(--color-bgblue-active);
   box-shadow: 0 0 0 3px #26a769;
+}
+.views-tabs .add.open a {
+  color: var(--color-white);
+  background-color: var(--color-absolutezero);
+}
+.views-tabs .add.open a::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' stroke-width='2' stroke='%23FFFFFF'%3E%3Cpath d='m3 8h10'/%3E%3Cpath d='m8 3v10'/%3E%3C/svg%3E");
 }
 /* Hide core icon, added via JS that isn't accessible via theme function. */
 .views-tabs .add .icon.add {
@@ -305,16 +296,6 @@ details.fieldset-no-legend {
 .views-tabs .action-list li {
   display: block;
 }
-
-.views-tab .open > a:hover {
-  color: #008bcb;
-  background-color: var(--color-whitesmoke);
-}
-
-.views-tab .action-list input.form-submit {
-  color: #008bcb;
-}
-
 .views-tabs li,
 .views-tabs li.is-active {
   width: auto;

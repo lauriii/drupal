@@ -312,24 +312,16 @@ details.fieldset-no-legend {
 
 .views-tabs .add {
   position: relative;
-  margin-top: 2px;
 }
 
 .views-tabs .add a {
-  padding: 9px 13px 7px 9px;
+  padding: 9px 13px 9px 9px;
   color: #545560;
   border: none;
   border-radius: 2px;
   background-color: transparent;
   font-size: 1rem;
   font-weight: 700;
-}
-
-/* Provide semi-highlighting button when tab navigating action list items */
-
-.views-tabs .add.open a:not(:focus) {
-  background-color: #fff;
-  box-shadow: 0 0 2px #cbcbcb;
 }
 
 .views-tabs .add a::before {
@@ -343,8 +335,7 @@ details.fieldset-no-legend {
 
 .views-tabs .add a:hover {
   color: #0036b1;
-  background-color: transparent;
-  box-shadow: 0 0 0 1px #545560;
+  background-color: #f0f5fd;
 }
 
 .views-tabs .add a:hover::before {
@@ -352,19 +343,18 @@ details.fieldset-no-legend {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' stroke-width='2' stroke='%230036b1'%3E%3Cpath d='m3 8h10'/%3E%3Cpath d='m8 3v10'/%3E%3C/svg%3E");
 }
 
-.views-tabs .add a:active {
-  color: #00339a;
-  background-color: #e6ecf8;
-}
-
-.views-tabs .add a:active::before {
-  /* Copy of icon from .action-link--icon-plus:active */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' stroke-width='2' stroke='%2300309e'%3E%3Cpath d='m3 8h10'/%3E%3Cpath d='m8 3v10'/%3E%3C/svg%3E");
-}
-
 .views-tabs .add a:focus {
   background-color: #e6ecf8;
   box-shadow: 0 0 0 3px #26a769;
+}
+
+.views-tabs .add.open a {
+  color: #fff;
+  background-color: #003cc5;
+}
+
+.views-tabs .add.open a::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' stroke-width='2' stroke='%23FFFFFF'%3E%3Cpath d='m3 8h10'/%3E%3Cpath d='m8 3v10'/%3E%3C/svg%3E");
 }
 
 /* Hide core icon, added via JS that isn't accessible via theme function. */
@@ -392,15 +382,6 @@ rgba(0, 0, 0, 0.1);
 
 .views-tabs .action-list li {
   display: block;
-}
-
-.views-tab .open > a:hover {
-  color: #008bcb;
-  background-color: #f3f4f9;
-}
-
-.views-tab .action-list input.form-submit {
-  color: #008bcb;
 }
 
 .views-tabs li,
