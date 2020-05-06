@@ -1011,7 +1011,11 @@ rgba(0, 0, 0, 0.1);
 }
 
 /**
- * Improve positioning after @todo has been resolved.
+ * Position dropbuttons with flexbox instead after the dropbuttons have been
+ * converted to splitbuttons.
+ *
+ * @see https://www.drupal.org/project/drupal/issues/3134107
+ * @see https://www.drupal.org/project/drupal/issues/1899236
  */
 
 .views-ui-display-tab-bucket .dropbutton-wrapper {
