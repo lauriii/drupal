@@ -794,7 +794,7 @@ rgba(0, 0, 0, 0.1);
 
 .views-ui-dialog .views-offset-top:not(:empty) {
   position: relative;
-  padding: 1rem 0.75rem 0.5rem 0.75rem;
+  padding: 0.75rem 1rem 0.5rem;
   background-color: #f3f4f9;
 }
 

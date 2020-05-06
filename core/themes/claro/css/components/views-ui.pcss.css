@@ -594,3 +594,29 @@ details.fieldset-no-legend {
   padding-right: 0.4rem;
   padding-left: 0.3rem;
 }
+
+.views-display-columns > * {
+  float: none;
+  width: auto;
+  margin: 0 0 var(--space-l) 0;
+}
+
+@media screen and (min-width: 60rem) { /* 960px */
+  .views-display-columns > * {
+    float: left; /* LTR */
+    width: 32%;
+    margin-bottom: 0;
+    margin-left: 2%; /* LTR */
+  }
+  [dir="rtl"] .views-display-columns > * {
+    float: right;
+    margin-right: 2%;
+    margin-left: 0;
+  }
+  .views-display-columns > *:first-child {
+    margin-left: 0; /* LTR */
+  }
+  [dir="rtl"] .views-display-columns > *:first-child {
+    margin-right: 0;
+  }
+}
