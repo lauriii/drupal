@@ -4,6 +4,28 @@
  * Styling for Media Library.
  */
 
+@import "../base/variables.pcss.css";
+
+/**
+ * Duplicate of vertical tabs variables.
+ */
+:root {
+  --vertical-tabs-margin-vertical: var(--space-s);
+  --vertical-tabs-border-radius: var(--details-accordion-border-size-radius);
+  --vertical-tabs-shadow: var(--details-box-shadow);
+  --vertical-tabs-border-color: var(--details-border-color);
+  --vertical-tabs-border-size: 1px;
+  --vertical-tabs-border: var(--vertical-tabs-border-size) solid var(--vertical-tabs-border-color);
+  --vertical-tabs-menu-item-shadow-extraspace: 0.5rem;
+  --vertical-tabs-menu-separator-color: var(--color-lightgray);
+  --vertical-tabs-menu-separator-size: 1px;
+  --vertical-tabs-menu-width: 20em;
+  --vertical-tabs-pane-width: calc(100% - var(--vertical-tabs-menu-width));
+  --vertical-tabs-menu-link-focus-border-size: var(--details-summary-focus-border-size);
+  --vertical-tabs-menu-link--active-border-size: 4px;
+  --vertical-tabs-menu-link--active-border-color: var(--color-absolutezero);
+}
+
 .media-library-wrapper {
   display: flex;
   margin: -1em;
@@ -14,66 +36,142 @@
  *   https://www.drupal.org/project/drupal/issues/3023767
  */
 .media-library-menu {
+  position: relative;
   display: block;
-  width: 600px;
-  max-width: 20%;
-  margin: 0; /* LTR */
-  padding: 0;
-  border-bottom: 1px solid #ccc;
-  background-color: #e6e5e1;
-  line-height: 1;
+  float: left; /* LTR */
+  width: var(--vertical-tabs-menu-width);
+  margin: 0;
+  padding-top: var(--vertical-tabs-menu-item-shadow-extraspace);
+  list-style: none;
+  color: var(--color-text);
 }
 [dir="rtl"] .media-library-menu {
-  margin: 0;
-}
+  float: right;
+  margin: 0;}
 
 /**
  * @todo Use a class instead of the li element.
  *   https://www.drupal.org/project/drupal/issues/3029227
  */
 .media-library-menu li {
+  overflow: hidden;
+  margin: calc(var(--vertical-tabs-menu-item-shadow-extraspace) * -2) calc(var(--vertical-tabs-border-size) * -1) calc(var(--vertical-tabs-menu-item-shadow-extraspace) * -1) calc(var(--vertical-tabs-menu-item-shadow-extraspace) * -1); /* LTR */
+  padding: var(--vertical-tabs-menu-item-shadow-extraspace) 0 var(--vertical-tabs-menu-item-shadow-extraspace) var(--vertical-tabs-menu-item-shadow-extraspace); /* LTR */
+}
+
+[dir="rtl"] .media-library-menu li {
+  margin-right: calc(var(--vertical-tabs-menu-item-shadow-extraspace) * -1);
+  margin-left: calc(var(--vertical-tabs-border-size) * -1);
+  padding-right: var(--vertical-tabs-menu-item-shadow-extraspace);
+  padding-left: 0;
+}
+
+.media-library-menu li::before {
+  position: absolute;
+  z-index: 1; /* The line should be kept above the vertical tabs menu link to keep it visible even if the link is hovered and gets the 'hover' background color. */
   display: block;
-  padding: 0;
-  list-style: none;
+  width: 100%;
+  margin-top: calc(var(--vertical-tabs-menu-separator-size) * -1);
+  border-top: var(--vertical-tabs-menu-separator-size) solid var(--vertical-tabs-menu-separator-color);
+  content: "";
 }
 
 .media-library-menu__link {
   position: relative;
   display: block;
-  box-sizing: border-box;
-  padding: 15px;
+  margin-top: calc(var(--vertical-tabs-border-size) * -1);
+  padding: var(--space-s) var(--space-s) var(--space-s) calc(var(--space-l) - var(--vertical-tabs-menu-link--active-border-size)); /* LTR */
   text-decoration: none;
-  border-bottom: 1px solid #b3b2ad;
-  background-color: #f2f2f0;
-  text-shadow: 0 1px hsla(0, 0%, 100%, 0.6);
+  word-wrap: break-word;
+  hyphens: auto;
+  color: var(--color-text);
+  border: var(--vertical-tabs-border-size) solid transparent;
+  border-width: var(--vertical-tabs-border-size) 0 var(--vertical-tabs-border-size) var(--vertical-tabs-menu-link--active-border-size); /* LTR */
+  border-radius: var(--vertical-tabs-border-radius) 0 0 var(--vertical-tabs-border-radius); /* LTR */
 }
 
-.media-library-menu__link:active,
-.media-library-menu__link:hover,
+[dir="rtl"] .media-library-menu__link {
+  padding-right: calc(var(--space-l) - var(--vertical-tabs-menu-link--active-border-size));
+  padding-left: var(--space-s);
+  border-width: var(--vertical-tabs-border-size) var(--vertical-tabs-menu-link--active-border-size) var(--vertical-tabs-border-size) 0;
+  border-radius: 0 var(--vertical-tabs-border-radius) var(--vertical-tabs-border-radius) 0;
+}
+
+@media screen and (-ms-high-contrast: active) {
+  .media-library-menu__link {
+    border-color: transparent;
+  }
+}
+
+/* Menu link states. */
 .media-library-menu__link:focus {
-  background: #fcfcfa;
-  text-shadow: none;
+  z-index: 4; /* Focus state should be on the highest level to make the focus effect be fully visible. This also means that it should have bigger z-index than the selected link. */
+  text-decoration: none;
+  box-shadow: none;
 }
 
-.media-library-menu__link:focus,
-.media-library-menu__link:active {
-  outline: none;
+.media-library-menu__link:hover {
+  text-decoration: none;
+  color: var(--color-absolutezero);
+  background: var(--color-bgblue-hover);
+}
+
+/* This pseudo element provides the background for the hover state. */
+.media-library-menu__link::before {
+  position: absolute;
+  z-index: 0; /* This should be on a lower level than the menu-item separator lines. */
+  top: calc(var(--vertical-tabs-border-size) * -1);
+  right: 0; /* LTR */
+  bottom: calc(var(--vertical-tabs-border-size) * -1);
+  left: calc(var(--vertical-tabs-menu-link--active-border-size) * -1); /* LTR */
+  content: "";
+  pointer-events: none;
+  background-clip: padding-box;
+}
+[dir="rtl"] .media-library-menu__link::before {
+  right: calc(var(--vertical-tabs-menu-link--active-border-size) * -1);
+  left: 0;
+}
+
+.media-library-menu__link:focus::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: calc(var(--vertical-tabs-border-size) * -1) calc(var(--vertical-tabs-menu-link--active-border-size) * -1);
+  content: "";
+  pointer-events: none;
+  border: var(--vertical-tabs-menu-link-focus-border-size) solid var(--color-focus);
+  border-radius: var(--vertical-tabs-border-radius);
 }
 
 .media-library-menu__link.active {
-  z-index: 1;
-  margin-right: -1px; /* LTR */
-  color: #000;
-  border-right: 1px solid #fcfcfa; /* LTR */
-  border-bottom: 1px solid #b3b2ad;
-  background-color: #fff;
-  box-shadow: 0 5px 5px -5px hsla(0, 0%, 0%, 0.3);
+  z-index: 3; /* The selected menu link should be on a higher level than the white masking line that hides the grey separator. */
+  color: var(--color-absolutezero);
+  border-color: var(--vertical-tabs-border-color) transparent;
+  background-color: var(--color-white);
+  box-shadow: var(--vertical-tabs-shadow);
 }
-[dir="rtl"] .media-library-menu__link.active {
-  margin-right: 0;
-  margin-left: -1px;
-  border-right: 0;
-  border-left: 1px solid #fcfcfa;
+
+.media-library-menu__link.active:hover {
+  color: var(--color-absolutezero-hover);
+  background-color: var(--color-bgblue-hover);
+}
+
+.media-library-menu__link.active::before {
+  z-index: 1; /* The blue active-tab indication should be on a higher level than the green focus border. */
+  border-left: var(--vertical-tabs-menu-link--active-border-size) solid var(--vertical-tabs-menu-link--active-border-color); /* LTR */
+  border-radius: var(--base-border-radius) 0 0 var(--base-border-radius); /* LTR */
+}
+[dir=rtl] .media-library-menu__link.active::before {
+  border-right: var(--vertical-tabs-menu-link--active-border-size) solid var(--vertical-tabs-menu-link--active-border-color);
+  border-left: 0;
+  border-radius: 0 var(--base-border-radius) var(--base-border-radius) 0;
+}
+
+.media-library-menu__link.active:hover::before {
+  background: none;
 }
 
 .media-library-content {
