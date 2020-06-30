@@ -56,7 +56,7 @@
 .media-library-menu li {
   overflow: hidden;
   margin: calc(var(--vertical-tabs-menu-item-shadow-extraspace) * -2) calc(var(--vertical-tabs-border-size) * -1) calc(var(--vertical-tabs-menu-item-shadow-extraspace) * -1) calc(var(--vertical-tabs-menu-item-shadow-extraspace) * -1); /* LTR */
-  padding: var(--vertical-tabs-menu-item-shadow-extraspace) 0 var(--vertical-tabs-menu-item-shadow-extraspace) var(--vertical-tabs-menu-item-shadow-extraspace); /* LTR */
+  padding: var(--vertical-tabs-menu-item-shadow-extraspace) 0; /* LTR */
 }
 
 [dir="rtl"] .media-library-menu li {
@@ -67,7 +67,6 @@
 }
 
 .media-library-menu li::before {
-  position: absolute;
   z-index: 1; /* The line should be kept above the vertical tabs menu link to keep it visible even if the link is hovered and gets the 'hover' background color. */
   display: block;
   width: 100%;
@@ -203,10 +202,14 @@
 }
 
 .media-library-add-form__input-wrapper {
-  padding: 16px;
-  border: 1px solid #bfbfbf;
-  border-radius: 2px;
-  background: #fcfcfa;
+  margin-top: var(--space-l);
+  margin-bottom: var(--space-l);
+  padding: var(--space-xs) var(--space-l) var(--space-l) var(--space-l);
+  border: var(--details-border-size) solid var(--details-border-color);
+  border-radius: var(--base-border-radius);
+  background-color: var(--color-white);
+  box-shadow: var(--details-box-shadow);
+  /*background: #fcfcfa;*/
 }
 
 /* Style the media add upload form. */

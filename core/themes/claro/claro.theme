@@ -1316,6 +1316,10 @@ function claro_form_media_library_add_form_upload_alter(array &$form, FormStateI
   if (isset($form['container'])) {
     $form['container']['#attributes']['class'][] = 'media-library-add-form__input-wrapper';
   }
+
+  if (isset($form['container']['upload'])) {
+    $form['container']['upload']['#media_library_upload'] = TRUE;
+  }
 }
 
 /**
