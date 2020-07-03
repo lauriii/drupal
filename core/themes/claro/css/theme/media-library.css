@@ -85,7 +85,8 @@
 
 [dir="rtl"] .media-library-menu {
   float: right;
-  margin: 0;}
+  margin: 0;
+}
 
 /**
  * @todo Use a class instead of the li element.
@@ -110,8 +111,8 @@
   display: block;
   width: 100%;
   margin-top: -1px;
-  border-top: 1px solid #d4d4d8;
   content: "";
+  border-top: 1px solid #d4d4d8;
 }
 
 .media-library-menu__link {
@@ -263,7 +264,7 @@ rgba(0, 0, 0, 0.1);
 2px
 4px
 rgba(0, 0, 0, 0.1);
-  /*background: #fcfcfa;*/
+  /* background: #fcfcfa; */
 }
 
 /* Style the media add upload form. */
@@ -441,6 +442,40 @@ rgba(0, 0, 0, 0.1);
 
 .media-library-item {
   position: relative;
+}
+
+/**
+ * Ajax throbbers inside a media library item.
+ */
+
+.media-library-item .ajax-progress.ajax-progress.ajax-progress {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  box-sizing: border-box;
+  width: 3rem; /* 56px */
+  height: 3rem;
+  margin: -1.5rem;
+  border: 1px solid rgba(216, 217, 224, 0.8);
+  border-radius: 3.5rem;
+  background: #fff;
+  box-shadow: 0 0.25rem 0.625rem rgba(34, 35, 48, 0.1);
+}
+
+.media-library-item .ajax-progress__throbber {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1.75rem;
+  height: 1.75rem;
+  margin: -0.875rem;
+  border: 3px solid #003cc5;
+  border-right: 3px dotted transparent;
+}
+
+.media-library-item .ajax-progress__message {
+  display: none;
 }
 
 /**
@@ -651,15 +686,12 @@ rgba(0, 0, 0, 0.1);
 }
 
 .media-library-item__name {
-  font-size: 14px;
-}
-
-.media-library-item__name {
   display: block;
   overflow: hidden;
-  margin: 2px;
+  margin: 0.25rem 0.5rem;
   white-space: nowrap;
   text-overflow: ellipsis;
+  font-size: 14px;
 }
 
 .media-library-item__attributes:hover .media-library-item__name,
@@ -699,15 +731,16 @@ rgba(0, 0, 0, 0.1);
   margin-left: 1em;
 }
 
-.media-library-widget__toggle-weight {
+.media-library-widget__toggle-weight.media-library-widget__toggle-weight {
   position: absolute;
-  top: 5px;
-  right: 5px; /* LTR */
+  top: 0.75rem;
+  right: 1rem; /* LTR */
+  text-decoration: none;
 }
 
-[dir="rtl"] .media-library-widget__toggle-weight {
+[dir="rtl"] .media-library-widget__toggle-weight.media-library-widget__toggle-weight {
   right: auto;
-  left: 5px;
+  left: 1rem;
 }
 
 /* Add negative margin for flex grid. */
@@ -745,7 +778,7 @@ rgba(0, 0, 0, 0.1);
   padding: 0;
   transition: 0.2s border-color;
   color: transparent;
-  border: 2px solid #ccc;
+  border: 1px solid #ccc !important;
   border-radius: 20px;
   background-size: 13px;
   text-shadow: none;
@@ -784,16 +817,6 @@ rgba(0, 0, 0, 0.1);
 .media-library-item__remove.button:focus {
   background: url("../../../../misc/icons/787878/ex.svg") #fff center no-repeat;
   background-size: 13px;
-}
-
-.media-library-item__edit:hover,
-.media-library-item__edit:focus,
-.media-library-item__remove:hover,
-.media-library-item__remove:focus,
-.media-library-item__remove.button:hover,
-.media-library-item__remove.button:focus,
-.media-library-item__remove.button:disabled:active {
-  border-color: #40b6ff;
 }
 
 /**

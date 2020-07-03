@@ -47,7 +47,8 @@
 }
 [dir="rtl"] .media-library-menu {
   float: right;
-  margin: 0;}
+  margin: 0;
+}
 
 /**
  * @todo Use a class instead of the li element.
@@ -71,8 +72,8 @@
   display: block;
   width: 100%;
   margin-top: calc(var(--vertical-tabs-menu-separator-size) * -1);
-  border-top: var(--vertical-tabs-menu-separator-size) solid var(--vertical-tabs-menu-separator-color);
   content: "";
+  border-top: var(--vertical-tabs-menu-separator-size) solid var(--vertical-tabs-menu-separator-color);
 }
 
 .media-library-menu__link {
@@ -209,7 +210,7 @@
   border-radius: var(--base-border-radius);
   background-color: var(--color-white);
   box-shadow: var(--details-box-shadow);
-  /*background: #fcfcfa;*/
+  /* background: #fcfcfa; */
 }
 
 /* Style the media add upload form. */
@@ -372,6 +373,37 @@
  */
 .media-library-item {
   position: relative;
+}
+
+/**
+ * Ajax throbbers inside a media library item.
+ */
+.media-library-item .ajax-progress.ajax-progress.ajax-progress {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  box-sizing: border-box;
+  width: 3rem; /* 56px */
+  height: 3rem;
+  margin: -1.5rem;
+  border: var(--input-border-size) solid var(--jui-dropdown-border-color);
+  border-radius: 3.5rem;
+  background: var(--color-white);
+  box-shadow: 0 0.25rem 0.625rem var(--jui-dropdown-shadow-color);
+}
+.media-library-item .ajax-progress__throbber {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1.75rem;
+  height: 1.75rem;
+  margin: -0.875rem;
+  border: 3px solid var(--color-absolutezero);
+  border-right: 3px dotted transparent;
+}
+.media-library-item .ajax-progress__message {
+  display: none;
 }
 
 /**
@@ -572,15 +604,12 @@
 }
 
 .media-library-item__name {
-  font-size: 14px;
-}
-
-.media-library-item__name {
   display: block;
   overflow: hidden;
-  margin: 2px;
+  margin: calc(var(--space-xs) / 2) var(--space-xs);
   white-space: nowrap;
   text-overflow: ellipsis;
+  font-size: 14px;
 }
 
 .media-library-item__attributes:hover .media-library-item__name,
@@ -617,14 +646,15 @@
   margin-left: 1em;
 }
 
-.media-library-widget__toggle-weight {
+.media-library-widget__toggle-weight.media-library-widget__toggle-weight {
   position: absolute;
-  top: 5px;
-  right: 5px; /* LTR */
+  top: var(--space-s);
+  right: var(--space-m); /* LTR */
+  text-decoration: none;
 }
-[dir="rtl"] .media-library-widget__toggle-weight {
+[dir="rtl"] .media-library-widget__toggle-weight.media-library-widget__toggle-weight {
   right: auto;
-  left: 5px;
+  left: var(--space-m);
 }
 
 /* Add negative margin for flex grid. */
@@ -660,7 +690,7 @@
   padding: 0;
   transition: 0.2s border-color;
   color: transparent;
-  border: 2px solid #ccc;
+  border: 1px solid #ccc !important;
   border-radius: 20px;
   background-size: 13px;
   text-shadow: none;
@@ -696,15 +726,6 @@
 .media-library-item__remove.button:focus {
   background: url("../../../../misc/icons/787878/ex.svg") #fff center no-repeat;
   background-size: 13px;
-}
-.media-library-item__edit:hover,
-.media-library-item__edit:focus,
-.media-library-item__remove:hover,
-.media-library-item__remove:focus,
-.media-library-item__remove.button:hover,
-.media-library-item__remove.button:focus,
-.media-library-item__remove.button:disabled:active {
-  border-color: #40b6ff;
 }
 
 /**
