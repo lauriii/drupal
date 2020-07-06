@@ -217,6 +217,13 @@
 .media-library-add-form--upload.media-library-add-form--without-input .form-item-upload {
   margin-bottom: 0;
 }
+.media-library-add-form--upload.media-library-add-form--with-input .form-managed-file_meta {
+  margin-top:0;
+}
+.media-library-add-form--upload.media-library-add-form--with-input .form-managed-file__main,
+.media-library-add-form--upload.media-library-add-form--with-input .form-managed-file.no-upload {
+  display: block;
+}
 
 .media-library-add-form .file-upload-help {
   margin: 8px 0 0;

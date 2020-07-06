@@ -721,7 +721,9 @@ function claro_views_ui_display_tab_alter(&$element) {
  * Implements hook_preprocess_HOOK for views_exposed_form.
  */
 function claro_preprocess_views_exposed_form(&$variables) {
+  // Use small form elements.
   $form = &$variables['form'];
+  $form['#attributes']['class'][] = 'form--small';
 
   // Add BEM classes for items in the form.
   // Sorted keys.
@@ -736,13 +738,13 @@ function claro_preprocess_views_exposed_form(&$variables) {
         $child_before_actions_key = $last_key;
         $form[$child_key]['#attributes']['class'][] = 'views-exposed-form__item';
         $form[$child_key]['#attributes']['class'][] = 'views-exposed-form__item--actions';
-        $action_child_keys = Element::children($form[$child_key], TRUE);
-        foreach ($action_child_keys as $action_child_key) {
-          $type = $form[$child_key][$action_child_key]['#type'] ?? '';
-          if ($type === 'submit') {
-            $form[$child_key][$action_child_key]['#attributes']['class'][] = 'button--small';
-          }
-        }
+//        $action_child_keys = Element::children($form[$child_key], TRUE);
+//        foreach ($action_child_keys as $action_child_key) {
+//          $type = $form[$child_key][$action_child_key]['#type'] ?? '';
+//          if ($type === 'submit') {
+//            $form[$child_key][$action_child_key]['#attributes']['class'][] = 'button--small';
+//          }
+//        }
       }
 
       if (!in_array($form[$child_key]['#type'], ['hidden', 'actions'])) {
@@ -750,11 +752,11 @@ function claro_preprocess_views_exposed_form(&$variables) {
         $last_key = $child_key;
       }
 
-      if ($form[$child_key]['#type'] === 'submit') {
-        $form[$child_key]['#attributes']['class'][] = 'button--small';
-      }
-
-      $form[$child_key]['#attributes']['class'][] = 'form-element--small';
+//      if ($form[$child_key]['#type'] === 'submit') {
+//        $form[$child_key]['#attributes']['class'][] = 'button--small';
+//      }
+//
+//      $form[$child_key]['#attributes']['class'][] = 'form-element--small';
     }
   }
 
@@ -1460,10 +1462,6 @@ function claro_preprocess_item_list__media_library_add_form_media_list(array &$v
       $fields[$source_field_name]['#attributes']['class'][] = 'media-library-add-form__source-field';
     }
   }
-//  $child_keys = Element::children($variables['items'][0]['value']['fields'], TRUE);
-//  foreach ($child_keys as $child_key) {
-//    $variables['items'][0]['value']['fields'][$child_key]['widget'][0]['value']['#attributes']['class'][] = 'form-element--small';
-//  }
 }
 
 /**
