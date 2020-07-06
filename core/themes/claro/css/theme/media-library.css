@@ -31,7 +31,7 @@
    */
   /*
    * Inputs.
-   */ /* Absolute zero with opacity. */ /* Davy's grey with 0.6 opacity. */ /* Light gray with 0.3 opacity on white bg. */ /* Old silver with 0.5 opacity on white bg. */ /* (1/8)em ~ 2px */ /* (1/16)em ~ 1px */ /* Font size is too big to use 1rem for extrasmall line-height */ /* 7px inside the form element label. */ /* 8px with the checkbox width of 19px */
+   */ /* Absolute zero with opacity. */ /* Davy's grey with 0.6 opacity. */ /* Light gray with 0.3 opacity on white bg. */ /* Old silver with 0.5 opacity on white bg. */ /* (1/8)em ~ 2px */ /* (1/16)em ~ 1px */ /* 48px */ /* 150% */ /* 32px */ /* 150 % */ /* 24px */ /* 150% */ /* 7px inside the form element label. */ /* 8px with the checkbox width of 19px */
   /*
    * Details.
    */
@@ -237,7 +237,7 @@ rgba(0, 0, 0, 0.1);
 /* Generic media add form styles. */
 
 .media-library-add-form--without-input .form-item {
-  margin: 0 0 1em;
+  margin-right: 1rem;
 }
 
 /**
@@ -281,6 +281,7 @@ rgba(0, 0, 0, 0.1);
 
 .media-library-add-form--oembed .media-library-add-form__input-wrapper {
   display: flex;
+  align-items: center;
 }
 
 @media screen and (max-width: 37.5em) {
@@ -865,7 +866,7 @@ rgba(0, 0, 0, 0.1);
   justify-content: center;
   width: 220px;
   margin-right: 20px; /* LTR */
-  background: #ebebeb;
+  background: rgba(243, 244, 249, 0.4);
 }
 
 [dir="rtl"] .media-library-add-form__preview {

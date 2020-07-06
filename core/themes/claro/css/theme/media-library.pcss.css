@@ -187,7 +187,7 @@
 
 /* Generic media add form styles. */
 .media-library-add-form--without-input .form-item {
-  margin: 0 0 1em;
+  margin-right: 1rem;
 }
 
 /**
@@ -225,6 +225,7 @@
 /* Style the media add oEmbed form. */
 .media-library-add-form--oembed .media-library-add-form__input-wrapper {
   display: flex;
+  align-items: center;
 }
 
 @media screen and (max-width: 37.5em) {
@@ -770,7 +771,7 @@
   justify-content: center;
   width: 220px;
   margin-right: 20px; /* LTR */
-  background: #ebebeb;
+  background: var(--color-whitesmoke-o-40);
 }
 [dir="rtl"] .media-library-add-form__preview {
   margin-right: 0;

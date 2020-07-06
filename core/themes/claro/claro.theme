@@ -544,6 +544,92 @@ function claro_form_node_form_alter(&$form, FormStateInterface $form_state) {
   $form['revision_information']['#type'] = 'container';
   $form['revision_information']['#group'] = 'meta';
   $form['revision_information']['#attributes']['class'][] = 'entity-meta__revision';
+
+  /* THE FOLLOWING ONLY EXISTS TO MAKE REVIEW EASIER FOR ISSUE 3083256, THIS
+  NEEDS TO BE REMOVED BEFORE RTBC */
+  $form['default'] = [
+    '#type' => 'container',
+  ];
+  $form['default']['title'] = [
+    '#type' => 'item',
+    '#title' => 'Default Form Elements',
+  ];
+  $form['default']['select'] = [
+    '#type' => 'select',
+    '#title' => 'Select',
+    '#options' => [
+      'one' => 'First Option',
+      'two' => 'Second Option',
+      'three' => 'Third Option',
+      'four' => 'Fourth Option',
+    ],
+  ];
+  $form['default']['text'] = [
+    '#type' => 'textfield',
+    '#title' => 'Text Field',
+  ];
+  $form['small'] = [
+    '#type' => 'container',
+  ];
+  $form['small']['title'] = [
+    '#type' => 'item',
+    '#title' => 'Small Form Elements',
+  ];
+  $form['small']['select'] = [
+    '#type' => 'select',
+    '#title' => 'Select',
+    '#options' => [
+      'one' => 'First Option',
+      'two' => 'Second Option',
+      'three' => 'Third Option',
+      'four' => 'Fourth Option',
+    ],
+    '#attributes' => [
+      'class' => [
+        'form-element--small'
+      ],
+    ],
+  ];
+  $form['small']['text'] = [
+    '#type' => 'textfield',
+    '#title' => 'Text Field',
+    '#attributes' => [
+      'class' => [
+        'form-element--small'
+      ],
+    ],
+  ];
+  $form['extrasmall'] = [
+    '#type' => 'container',
+  ];
+  $form['extrasmall']['title'] = [
+    '#type' => 'item',
+    '#title' => 'Extrasmall Form Elements',
+  ];
+  $form['extrasmall']['select'] = [
+    '#title' => 'Select',
+    '#type' => 'select',
+    '#options' => [
+      'one' => 'First Option',
+      'two' => 'Second Option',
+      'three' => 'Third Option',
+      'four' => 'Fourth Option',
+    ],
+    '#attributes' => [
+      'class' => [
+        'form-element--extrasmall'
+      ],
+    ],
+  ];
+  $form['extrasmall']['text'] = [
+    '#type' => 'textfield',
+    '#title' => 'Text Field',
+    '#attributes' => [
+      'class' => [
+        'form-element--extrasmall'
+      ],
+    ],
+  ];
 }
 
 /**
@@ -650,12 +736,25 @@ function claro_preprocess_views_exposed_form(&$variables) {
         $child_before_actions_key = $last_key;
         $form[$child_key]['#attributes']['class'][] = 'views-exposed-form__item';
         $form[$child_key]['#attributes']['class'][] = 'views-exposed-form__item--actions';
+        $action_child_keys = Element::children($form[$child_key], TRUE);
+        foreach ($action_child_keys as $action_child_key) {
+          $type = $form[$child_key][$action_child_key]['#type'] ?? '';
+          if ($type === 'submit') {
+            $form[$child_key][$action_child_key]['#attributes']['class'][] = 'button--small';
+          }
+        }
       }
 
       if (!in_array($form[$child_key]['#type'], ['hidden', 'actions'])) {
         $form[$child_key]['#wrapper_attributes']['class'][] = 'views-exposed-form__item';
         $last_key = $child_key;
       }
+
+      if ($form[$child_key]['#type'] === 'submit') {
+        $form[$child_key]['#attributes']['class'][] = 'button--small';
+      }
+
+      $form[$child_key]['#attributes']['class'][] = 'form-element--small';
     }
   }
 
@@ -1312,13 +1411,11 @@ function claro_form_media_library_add_form_alter(array &$form, FormStateInterfac
  */
 function claro_form_media_library_add_form_upload_alter(array &$form, FormStateInterface $form_state) {
   $form['#attributes']['class'][] = 'media-library-add-form--upload';
-
-  if (isset($form['container'])) {
-    $form['container']['#attributes']['class'][] = 'media-library-add-form__input-wrapper';
-  }
-
   if (isset($form['container']['upload'])) {
     $form['container']['upload']['#media_library_upload'] = TRUE;
+  }
+  if (isset($form['container'])) {
+    $form['container']['#attributes']['class'][] = 'media-library-add-form__input-wrapper';
   }
 }
 
@@ -1344,19 +1441,29 @@ function claro_form_media_library_add_form_oembed_alter(array &$form, FormStateI
  * they are saved.
  */
 function claro_preprocess_item_list__media_library_add_form_media_list(array &$variables) {
+  $variables['attributes']['class'][] = 'form--small';
+
   foreach ($variables['items'] as &$item) {
     $item['value']['preview']['#attributes']['class'][] = 'media-library-add-form__preview';
     $item['value']['fields']['#attributes']['class'][] = 'media-library-add-form__fields';
-    $item['value']['remove_button']['#attributes']['class'][] = 'media-library-add-form__remove-button';
+    $item['value']['remove_button']['#attributes']['class'][] = 'media-library-add-form__remove-button button--extrasmall';
 
     // #source_field_name is set by AddFormBase::buildEntityFormElement()
     // to help themes and form_alter hooks identify the source field.
     $fields = &$item['value']['fields'];
     $source_field_name = $fields['#source_field_name'];
-    if (isset($fields[$source_field_name])) {
+
+    //Set this flag so we can remove the details element.
+    $fields['field_media_image']['widget'][0]['#media_library_upload'] = TRUE;
+
+      if (isset($fields[$source_field_name])) {
       $fields[$source_field_name]['#attributes']['class'][] = 'media-library-add-form__source-field';
     }
   }
+//  $child_keys = Element::children($variables['items'][0]['value']['fields'], TRUE);
+//  foreach ($child_keys as $child_key) {
+//    $variables['items'][0]['value']['fields'][$child_key]['widget'][0]['value']['#attributes']['class'][] = 'form-element--small';
+//  }
 }
 
 /**

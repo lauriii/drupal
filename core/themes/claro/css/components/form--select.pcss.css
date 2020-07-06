@@ -5,28 +5,49 @@
 
 @import "../base/variables.pcss.css";
 
-.form-element--type-select {
-  padding-right: calc(2rem - var(--input-border-size));
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 9'%3E%3Cpath fill='none' stroke-width='1.5' d='M1 1L7 7L13 1' stroke='%23545560'/%3E%3C/svg%3E%0A");
-  background-repeat: no-repeat;
-  background-position: 100% 50%;
-  background-size: 2.75rem 0.5625rem; /* w: 14px + (2 * 15px), h: 9px */
-}
-[dir="rtl"] .form-element--type-select {
-  padding-right: calc(1rem - var(--input-border-size));
-  padding-left: calc(2rem - var(--input-border-size));
-  background-position: 0 50%;
+:root {
+  --select--background-image-height-width-ratio: 0.642; /* SVG background image has width:14px height:9px. 9 / 14 = .642 */
+  --select--background-image-width: var(--space-m);
+  --select--background-image-height: calc(var(--select--background-image-width) * var(--select--background-image-height-width-ratio));
+  --select--background-image-width--small: var(--space-s);
+  --select--background-image-height--small: calc(var(--select--background-image-width--small) * var(--select--background-image-height-width-ratio));
+  --select--background-image-width--extrasmall: var(--space-s);
+  --select--background-image-height--extrasmall: calc(var(--select--background-image-width--small) * var(--select--background-image-height-width-ratio));
 }
 
-.no-touchevents .form-element--type-select.form-element--extrasmall,
-.no-touchevents .form-element--type-select[name$="][_weight]"] {
-  padding-right: calc(1.5rem - var(--input-border-size));
-  background-size: 1.75rem 0.4375rem; /* w: 14px + (2 * 7px), h: 7px */
+.form-element--type-select {
+  padding-right: calc(var(--select--background-image-width) + (var(--input-padding-horizontal) * 2)); /* LTR */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 9'%3E%3Cpath fill='none' stroke-width='1.5' d='M1 1L7 7L13 1' stroke='%23545560'/%3E%3C/svg%3E%0A");
+  background-repeat: no-repeat;
+  background-position: calc(100% - var(--input-padding-horizontal)) calc(50% + var(--input-border-size)); /* LTR */
+  background-size: var(--select--background-image-width) var(--select--background-image-height);
 }
-[dir="rtl"].no-touchevents .form-element--type-select.form-element--extrasmall,
+[dir="rtl"] .form-element--type-select {
+  padding-right: var(--input-padding-horizontal);
+  padding-left: calc(var(--select--background-image-width) + (var(--input-padding-horizontal) * 2));
+  background-position: var(--input-padding-horizontal) calc(50% + var(--input-border-size));
+}
+
+.no-touchevents .form--small .form-element--type-select.form-element {
+  padding-right: calc(var(--select--background-image-width--small) + (var(--input-padding-horizontal) * 2)); /* LTR */
+  background-size: var(--select--background-image-width--small) var(--select--background-image-height--small);
+}
+[dir="rtl"].no-touchevents .form--small .form-element--type-select.form-element {
+  padding-right: var(--input-padding-horizontal);
+  padding-left: calc(var(--select--background-image-width--small) + (var(--input-padding-horizontal) * 2));
+}
+
+.no-touchevents .form--extrasmall .form-element--type-select.form-element,
+.no-touchevents .form-element--type-select[name$="][_weight]"] {
+  padding-right: calc(var(--select--background-image-width--extrasmall) + (var(--input-padding-horizontal--extrasmall) * 2)); /* LTR */
+  background-position: calc(100% - var(--input-padding-horizontal--extrasmall)) 50%; /* LTR */
+  background-size: var(--select--background-image-width--extrasmall) var(--select--background-image-height--extrasmall);
+}
+[dir="rtl"].no-touchevents .form--extrasmall .form-element--type-select.form-element,
 [dir="rtl"].no-touchevents .form-element--type-select[name$="][_weight]"] {
-  padding-right: calc(0.5rem - var(--input-border-size));
-  padding-left: calc(1.5rem - var(--input-border-size));
+  padding-right: var(--input-padding-horizontal--extrasmall);
+  padding-left: calc(var(--select--background-image-width--extrasmall) + (var(--input-padding-horizontal--extrasmall) * 2));
+  background-position: var(--input-padding-horizontal--extrasmall) 50%;
 }
 
 .form-element--type-select::-ms-expand {

@@ -48,8 +48,12 @@
   margin-left: var(--space-m);
 }
 
+.views-exposed-form__item--actions.views-exposed-form__item--actions {
+  margin: 0;
+  padding: 0;
+}
 .views-exposed-form__item--actions.views-exposed-form__item--actions .button {
-  margin-bottom: 0;
+  margin-bottom: var(--input-border-size);
 }
 
 .views-exposed-form__item--actions.views-exposed-form__item--actions .button:last-child {

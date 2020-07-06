@@ -8,7 +8,7 @@
 .form-element {
   box-sizing: border-box;
   max-width: 100%;
-  min-height: calc(((var(--input-padding-vertical) + var(--input-border-size)) * 2) + var(--input-line-height)); /* iOS. */
+  min-height: var(--input-min-height);
   padding: var(--input-padding-vertical) var(--input-padding-horizontal);
   color: var(--input-fg-color);
   border: var(--input-border-size) solid var(--input-border-color);
@@ -19,12 +19,19 @@
   appearance: none; /* Being able to control inner box shadow on iOS. */
 }
 
-.no-touchevents .form-element--extrasmall,
+.no-touchevents .form--small .form-element {
+  min-height: var(--input-min-height--small);
+  padding: var(--input-padding-vertical--small) var(--input-padding-horizontal--small);
+  font-size: var(--input-font-size--small);
+  line-height: var(--input-line-height--small);
+}
+
+.no-touchevents .form--extrasmall .form-element,
 .no-touchevents .form-element[name$="][_weight]"] {
-  min-height: calc(((var(--input--extrasmall-padding-vertical) + var(--input-border-size)) * 2) + var(--input--extrasmall-line-height)); /* iOS. */
-  padding: var(--input--extrasmall-padding-vertical) var(--input--extrasmall-padding-horizontal);
-  font-size: var(--input--extrasmall-font-size);
-  line-height: var(--input--extrasmall-line-height);
+  min-height: var(--input-min-height--extrasmall); /* iOS. */
+  padding: var(--input-padding-vertical--extrasmall) var(--input-padding-horizontal--extrasmall);
+  font-size: var(--input-font-size--extrasmall);
+  line-height: var(--input-line-height--extrasmall);
 }
 
 /**

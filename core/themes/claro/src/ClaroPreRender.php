@@ -25,7 +25,7 @@ class ClaroPreRender implements TrustedCallbackInterface {
       $element['upload_button']['#attributes']['class'][] = 'upload-button';
     }
 
-    // Wrap single-cardinality widgets with a details element.
+    // Wrap single-cardinality widgets with a details element. Do not wrap Media Library upload element.
     $single_file_widget = empty($element['#media_library_upload']) && !empty($element['#cardinality']) && $element['#cardinality'] === 1;
     if ($single_file_widget && empty($element['#single_wrapped'])) {
       $element['#theme_wrappers']['details'] = [
