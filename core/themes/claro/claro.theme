@@ -1470,7 +1470,8 @@ function claro_preprocess_item_list__media_library_add_form_media_list(array &$v
     $source_field_name = $fields['#source_field_name'];
 
     // Set this flag so we can remove the details element.
-    $fields['field_media_image']['widget'][0]['#media_library_upload'] = TRUE;
+    xdebug_break();
+    $fields[$source_field_name]['widget'][0]['#media_library_upload'] = TRUE;
 
     if (isset($fields[$source_field_name])) {
       $fields[$source_field_name]['#attributes']['class'][] = 'media-library-add-form__source-field';
