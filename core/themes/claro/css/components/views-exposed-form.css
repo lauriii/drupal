@@ -110,7 +110,9 @@ rgba(0, 0, 0, 0.1);
   padding: 0;
 }
 
-.views-exposed-form__item--actions.views-exposed-form__item--actions .button {
+.views-exposed-form__item--actions.views-exposed-form__item--actions .button,
+.form--small .views-exposed-form__item--actions.views-exposed-form__item--actions .button,
+.form--extrasmall .views-exposed-form__item--actions.views-exposed-form__item--actions .button {
   margin-bottom: 1px;
 }
 

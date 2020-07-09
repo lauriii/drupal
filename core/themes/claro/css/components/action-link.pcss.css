@@ -54,13 +54,15 @@
 }
 
 /* Small variant. */
-.no-touchevents .action-link--small {
+.no-touchevents .action-link--small,
+.no-touchevents .form--small .action-link {
   padding: calc(var(--space-s) - ((var(--space-l) - var(--space-s)) / 2)) var(--space-s);
   font-size: var(--font-size-s);
 }
 
 /* Extra small variant. */
-.no-touchevents .action-link--extrasmall {
+.no-touchevents .action-link--extrasmall,
+.no-touchevents .form--extrasmall .action-link {
   padding: 0 var(--space-xs);
   font-size: var(--font-size-s);
 }

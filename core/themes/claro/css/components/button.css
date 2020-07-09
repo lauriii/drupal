@@ -32,7 +32,7 @@
    */
   /*
    * Inputs.
-   */ /* Absolute zero with opacity. */ /* Davy's grey with 0.6 opacity. */ /* Light gray with 0.3 opacity on white bg. */ /* Old silver with 0.5 opacity on white bg. */ /* (1/8)em ~ 2px */ /* (1/16)em ~ 1px */ /* Font size is too big to use 1rem for extrasmall line-height */ /* 7px inside the form element label. */ /* 8px with the checkbox width of 19px */
+   */ /* Absolute zero with opacity. */ /* Davy's grey with 0.6 opacity. */ /* Light gray with 0.3 opacity on white bg. */ /* Old silver with 0.5 opacity on white bg. */ /* (1/8)em ~ 2px */ /* (1/16)em ~ 1px */ /* 48px */ /* 150% */ /* 32px */ /* 150 % */ /* 24px */ /* 150% */ /* 7px inside the form element label. */ /* 8px with the checkbox width of 19px */
   /*
    * Details.
    */
@@ -125,7 +125,8 @@
 
 /* Common styles for small buttons */
 
-.no-touchevents .button--small {
+.no-touchevents .button--small,
+.no-touchevents .form--small .button {
   margin: 0.75rem 0.5rem 0.75rem 0; /* LTR */
   padding: calc(0.5rem - 1px) calc(1rem - 1px); /* 1 */
   font-size: 0.79rem;
@@ -133,14 +134,17 @@
 
 /* Common styles for extra small buttons */
 
-.no-touchevents .button--extrasmall {
+.no-touchevents .button--extrasmall,
+.no-touchevents .form--extrasmall .button {
   margin: 0.5rem 0.5rem 0.5rem 0; /* LTR */
   padding: calc(0.25rem - 1px) calc(0.75rem - 1px); /* 1 */
   font-size: 0.79rem;
 }
 
 [dir="rtl"].no-touchevents .button--small,
-[dir="rtl"].no-touchevents .button--extrasmall {
+[dir="rtl"].no-touchevents .form--small .button,
+[dir="rtl"].no-touchevents .button--extrasmall,
+[dir="rtl"].no-touchevents .form--extrasmall .button {
   margin-right: 0;
   margin-left: 0.5rem;
 }

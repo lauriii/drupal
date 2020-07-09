@@ -568,6 +568,11 @@ function claro_form_node_form_alter(&$form, FormStateInterface $form_state) {
     '#type' => 'textfield',
     '#title' => 'Text Field',
   ];
+  $form['default']['autocomplete'] = [
+    '#type' => 'textfield',
+    '#title' => 'Autocomplete Field',
+    '#autocomplete_route_name' => 'block.category_autocomplete',
+  ];
   $form['small'] = [
     '#type' => 'container',
   ];
@@ -586,7 +591,7 @@ function claro_form_node_form_alter(&$form, FormStateInterface $form_state) {
     ],
     '#attributes' => [
       'class' => [
-        'form-element--small'
+        'form-element--small',
       ],
     ],
   ];
@@ -595,7 +600,17 @@ function claro_form_node_form_alter(&$form, FormStateInterface $form_state) {
     '#title' => 'Text Field',
     '#attributes' => [
       'class' => [
-        'form-element--small'
+        'form-element--small',
+      ],
+    ],
+  ];
+  $form['small']['autocomplete'] = [
+    '#type' => 'textfield',
+    '#title' => 'Autocomplete Field',
+    '#autocomplete_route_name' => 'block.category_autocomplete',
+    '#attributes' => [
+      'class' => [
+        'form-element--small',
       ],
     ],
   ];
@@ -617,7 +632,7 @@ function claro_form_node_form_alter(&$form, FormStateInterface $form_state) {
     ],
     '#attributes' => [
       'class' => [
-        'form-element--extrasmall'
+        'form-element--extrasmall',
       ],
     ],
   ];
@@ -626,7 +641,17 @@ function claro_form_node_form_alter(&$form, FormStateInterface $form_state) {
     '#title' => 'Text Field',
     '#attributes' => [
       'class' => [
-        'form-element--extrasmall'
+        'form-element--extrasmall',
+      ],
+    ],
+  ];
+  $form['extrasmall']['autocomplete'] = [
+    '#type' => 'textfield',
+    '#title' => 'Autocomplete Field',
+    '#autocomplete_route_name' => 'block.category_autocomplete',
+    '#attributes' => [
+      'class' => [
+        'form-element--extrasmall',
       ],
     ],
   ];
@@ -718,12 +743,10 @@ function claro_views_ui_display_tab_alter(&$element) {
 }
 
 /**
- * Implements hook_preprocess_HOOK for views_exposed_form.
+ * Implements hook_preprocess_HOOK() for views_exposed_form.
  */
 function claro_preprocess_views_exposed_form(&$variables) {
-  // Use small form elements.
   $form = &$variables['form'];
-  $form['#attributes']['class'][] = 'form--small';
 
   // Add BEM classes for items in the form.
   // Sorted keys.
@@ -738,25 +761,12 @@ function claro_preprocess_views_exposed_form(&$variables) {
         $child_before_actions_key = $last_key;
         $form[$child_key]['#attributes']['class'][] = 'views-exposed-form__item';
         $form[$child_key]['#attributes']['class'][] = 'views-exposed-form__item--actions';
-//        $action_child_keys = Element::children($form[$child_key], TRUE);
-//        foreach ($action_child_keys as $action_child_key) {
-//          $type = $form[$child_key][$action_child_key]['#type'] ?? '';
-//          if ($type === 'submit') {
-//            $form[$child_key][$action_child_key]['#attributes']['class'][] = 'button--small';
-//          }
-//        }
       }
 
       if (!in_array($form[$child_key]['#type'], ['hidden', 'actions'])) {
         $form[$child_key]['#wrapper_attributes']['class'][] = 'views-exposed-form__item';
         $last_key = $child_key;
       }
-
-//      if ($form[$child_key]['#type'] === 'submit') {
-//        $form[$child_key]['#attributes']['class'][] = 'button--small';
-//      }
-//
-//      $form[$child_key]['#attributes']['class'][] = 'form-element--small';
     }
   }
 
@@ -772,6 +782,9 @@ function claro_preprocess_views_exposed_form(&$variables) {
 function claro_form_views_exposed_form_alter(&$form, FormStateInterface $form_state) {
   $view = $form_state->getStorage()['view'];
   $view_title = $view->getTitle();
+
+  // Use small form elements.
+  $form['#attributes']['class'][] = 'form--small';
 
   // Add a label so screenreaders can identify the purpose of the exposed form
   // without having to scan content that appears further down the page.
@@ -1414,6 +1427,7 @@ function claro_form_media_library_add_form_alter(array &$form, FormStateInterfac
 function claro_form_media_library_add_form_upload_alter(array &$form, FormStateInterface $form_state) {
   $form['#attributes']['class'][] = 'media-library-add-form--upload';
   if (isset($form['container']['upload'])) {
+    // Set this flag so we can remove the details element.
     $form['container']['upload']['#media_library_upload'] = TRUE;
   }
   if (isset($form['container'])) {
@@ -1455,10 +1469,10 @@ function claro_preprocess_item_list__media_library_add_form_media_list(array &$v
     $fields = &$item['value']['fields'];
     $source_field_name = $fields['#source_field_name'];
 
-    //Set this flag so we can remove the details element.
+    // Set this flag so we can remove the details element.
     $fields['field_media_image']['widget'][0]['#media_library_upload'] = TRUE;
 
-      if (isset($fields[$source_field_name])) {
+    if (isset($fields[$source_field_name])) {
       $fields[$source_field_name]['#attributes']['class'][] = 'media-library-add-form__source-field';
     }
   }

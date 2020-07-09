@@ -28,22 +28,26 @@
   background-position: var(--input-padding-horizontal) calc(50% + var(--input-border-size));
 }
 
-.no-touchevents .form--small .form-element--type-select.form-element {
+.no-touchevents .form--small .form-element--type-select,
+.no-touchevents .form-element--type-select.form-element--small {
   padding-right: calc(var(--select--background-image-width--small) + (var(--input-padding-horizontal) * 2)); /* LTR */
   background-size: var(--select--background-image-width--small) var(--select--background-image-height--small);
 }
-[dir="rtl"].no-touchevents .form--small .form-element--type-select.form-element {
+[dir="rtl"].no-touchevents .form-element--type-select.form-element--small,
+[dir="rtl"].no-touchevents .form--small .form-element--type-select {
   padding-right: var(--input-padding-horizontal);
   padding-left: calc(var(--select--background-image-width--small) + (var(--input-padding-horizontal) * 2));
 }
 
-.no-touchevents .form--extrasmall .form-element--type-select.form-element,
+.no-touchevents .form--extrasmall .form-element--type-select,
+.no-touchevents .form-element--type-select.form-element--extrasmall,
 .no-touchevents .form-element--type-select[name$="][_weight]"] {
   padding-right: calc(var(--select--background-image-width--extrasmall) + (var(--input-padding-horizontal--extrasmall) * 2)); /* LTR */
   background-position: calc(100% - var(--input-padding-horizontal--extrasmall)) 50%; /* LTR */
   background-size: var(--select--background-image-width--extrasmall) var(--select--background-image-height--extrasmall);
 }
-[dir="rtl"].no-touchevents .form--extrasmall .form-element--type-select.form-element,
+[dir="rtl"].no-touchevents .form--extrasmall .form-element--type-select,
+[dir="rtl"].no-touchevents .form-element--type-select.form-element--extrasmall,
 [dir="rtl"].no-touchevents .form-element--type-select[name$="][_weight]"] {
   padding-right: var(--input-padding-horizontal--extrasmall);
   padding-left: calc(var(--select--background-image-width--extrasmall) + (var(--input-padding-horizontal--extrasmall) * 2));

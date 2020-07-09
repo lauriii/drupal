@@ -52,7 +52,9 @@
   margin: 0;
   padding: 0;
 }
-.views-exposed-form__item--actions.views-exposed-form__item--actions .button {
+.views-exposed-form__item--actions.views-exposed-form__item--actions .button,
+.form--small .views-exposed-form__item--actions.views-exposed-form__item--actions .button,
+.form--extrasmall .views-exposed-form__item--actions.views-exposed-form__item--actions .button {
   margin-bottom: var(--input-border-size);
 }
 

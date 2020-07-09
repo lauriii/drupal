@@ -73,7 +73,8 @@
   appearance: none; /* Being able to control inner box shadow on iOS. */
 }
 
-.no-touchevents .form--small .form-element {
+.no-touchevents .form--small .form-element,
+.no-touchevents .form-element--small {
   min-height: 2rem;
   padding: calc((0.6665rem - 2px)/2) calc(1rem - 1px);
   font-size: 0.889rem;
@@ -81,6 +82,7 @@
 }
 
 .no-touchevents .form--extrasmall .form-element,
+.no-touchevents .form-element--extrasmall,
 .no-touchevents .form-element[name$="][_weight]"] {
   min-height: 1.5rem; /* iOS. */
   padding: calc((0.315rem - 2px)/2) calc(0.5rem - 1px);
