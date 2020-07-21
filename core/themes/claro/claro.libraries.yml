@@ -185,6 +185,12 @@ checkbox:
     js/checkbox.js: {}
   dependencies:
     - core/drupal
+    -
+icon-link:
+  version: VERSION
+  css:
+    component:
+      css/components/icon-link.css: {}
 
 dropbutton:
   version: VERSION
@@ -258,6 +264,8 @@ media_library.theme:
   css:
     theme:
       css/theme/media-library.css: {}
+  dependencies:
+    - claro/icon-link
 
 media_library.ui:
   version: VERSION

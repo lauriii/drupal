@@ -1484,7 +1484,7 @@ function claro_preprocess_item_list__media_library_add_form_media_list(array &$v
  * This targets each media item selected in an entity reference field.
  */
 function claro_preprocess_media_library_item__widget(array &$variables) {
-  $variables['content']['remove_button']['#attributes']['class'][] = 'media-library-item__remove';
+  $variables['content']['remove_button']['#attributes']['class'][] = 'media-library-item__remove icon-link';
 }
 
 /**
@@ -1542,10 +1542,10 @@ function claro_views_pre_render(ViewExecutable $view) {
         $add_classes($view->field['rendered_entity']->options['element_class'], ['media-library-item__content']);
       }
       if (array_key_exists('edit_media', $view->field)) {
-        $add_classes($view->field['edit_media']->options['alter']['link_class'], ['media-library-item__edit']);
+        $add_classes($view->field['edit_media']->options['alter']['link_class'], ['media-library-item__edit icon-link']);
       }
       if (array_key_exists('delete_media', $view->field)) {
-        $add_classes($view->field['delete_media']->options['alter']['link_class'], ['media-library-item__remove']);
+        $add_classes($view->field['delete_media']->options['alter']['link_class'], ['media-library-item__remove icon-link']);
       }
     }
     elseif (strpos($view->current_display, 'widget') === 0) {

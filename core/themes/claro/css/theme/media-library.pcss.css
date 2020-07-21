@@ -218,7 +218,7 @@
   margin-bottom: 0;
 }
 .media-library-add-form--upload.media-library-add-form--with-input .form-managed-file_meta {
-  margin-top:0;
+  margin-top: 0;
 }
 .media-library-add-form--upload.media-library-add-form--with-input .form-managed-file__main,
 .media-library-add-form--upload.media-library-add-form--with-input .form-managed-file.no-upload {
@@ -537,12 +537,20 @@
   top: 5px;
   left: 5px;
   border-width: 3px;
-  border-color: #40b6ff;
   border-radius: 3px;
 }
+.media-library-item--grid.is-hover:before,
+.media-library-item--grid.checked.is-hover:before {
+  border-color: var(--color-absolutezero-hover);
+}
+
+.media-library-item--grid.is-focus:before {
+  border-color: var(--color-focus);
+}
+
 
 .media-library-item--grid.checked:before {
-  border-color: #0076c0;
+  border-color: var(--color-absolutezero);
 }
 
 .media-library-item__click-to-select-checkbox {
@@ -692,15 +700,13 @@
   z-index: 1;
   top: 10px;
   overflow: hidden;
-  width: 21px;
-  height: 21px;
+  width: 24px;
+  height: 24px;
   margin: 5px;
   padding: 0;
   transition: 0.2s border-color;
   color: transparent;
-  border: 1px solid #ccc !important;
-  border-radius: 20px;
-  background-size: 13px;
+  background-size: 12px;
   text-shadow: none;
   font-size: 0;
 }
@@ -722,8 +728,15 @@
 }
 
 .media-library-item__edit {
-  background: url("../../../../misc/icons/787878/pencil.svg") #fff center no-repeat;
-  background-size: 13px;
+  /* !important to override button class border. */
+  border: 1px solid var(--color-lightgray) !important;
+  background-image: url("../../../../misc/icons/545560/pencil.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 12px;
+}
+.media-library-item__edit:active {
+  background-image: url("../../../../misc/icons/ffffff/pencil.svg");
 }
 .media-library-item__remove,
 .media-library-item__remove.button,
@@ -732,8 +745,19 @@
 .media-library-item__remove.button:disabled:active,
 .media-library-item__remove.button:hover,
 .media-library-item__remove.button:focus {
-  background: url("../../../../misc/icons/787878/ex.svg") #fff center no-repeat;
-  background-size: 13px;
+  /* !important to override button class border. */
+  border: 1px solid var(--color-lightgray) !important;
+  background-image: url("../../../../misc/icons/545560/ex.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 12px;
+}
+
+.media-library-item__remove:active,
+.media-library-item__remove.button:active {
+  /* !important to override button class border. */
+  border-color: var(--color-absolutezero) !important;
+  background-image: url("../../../../misc/icons/ffffff/ex.svg");
 }
 
 /**
