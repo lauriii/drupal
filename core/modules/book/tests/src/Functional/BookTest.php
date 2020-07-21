@@ -173,7 +173,7 @@ class BookTest extends BrowserTestBase {
 
     // Check the presence of expected cache tags.
     $this->drupalGet('node/add/book');
-    $this->assertCacheTag('config:book.settings');
+    $this->assertSession()->responseHeaderContains('X-Drupal-Cache-Tags', 'config:book.settings');
 
     /*
      * Add Node 5 under Node 3.
@@ -326,16 +326,14 @@ class BookTest extends BrowserTestBase {
     /** @var \Drupal\book\BookManagerInterface $manager */
     $manager = $this->container->get('book.manager');
     $options = $manager->getTableOfContents($book->id(), 3);
+    // Verify that all expected option keys are present.
     $expected_nids = [$book->id(), $nodes[0]->id(), $nodes[1]->id(), $nodes[2]->id(), $nodes[3]->id(), $nodes[6]->id(), $nodes[4]->id()];
-    $this->assertEqual(count($options), count($expected_nids));
-    $diff = array_diff($expected_nids, array_keys($options));
-    $this->assertTrue(empty($diff), 'Found all expected option keys');
+    $this->assertEquals($expected_nids, array_keys($options));
     // Exclude Node 3.
     $options = $manager->getTableOfContents($book->id(), 3, [$nodes[3]->id()]);
+    // Verify that expected option keys are present after excluding Node 3.
     $expected_nids = [$book->id(), $nodes[0]->id(), $nodes[1]->id(), $nodes[2]->id(), $nodes[4]->id()];
-    $this->assertEqual(count($options), count($expected_nids));
-    $diff = array_diff($expected_nids, array_keys($options));
-    $this->assertTrue(empty($diff), 'Found all expected option keys after excluding Node 3');
+    $this->assertEquals($expected_nids, array_keys($options));
   }
 
   /**
@@ -434,7 +432,8 @@ class BookTest extends BrowserTestBase {
     $this->drupalLogin($this->adminUser);
     $this->drupalGet('node/' . $empty_book->id() . '/outline');
     $this->assertRaw(t('Book outline'));
-    $this->assertOptionSelected('edit-book-bid', 0, 'Node does not belong to a book');
+    // Verify that the node does not belong to a book.
+    $this->assertTrue($this->assertSession()->optionExists('edit-book-bid', 0)->isSelected());
     $this->assertSession()->linkNotExists(t('Remove from book outline'));
 
     $edit = [];
@@ -474,7 +473,7 @@ class BookTest extends BrowserTestBase {
 
     // Test the form itself.
     $this->drupalGet('node/' . $node->id() . '/edit');
-    $this->assertOptionSelected('edit-book-bid', $node->id());
+    $this->assertTrue($this->assertSession()->optionExists('edit-book-bid', $node->id())->isSelected());
   }
 
   /**

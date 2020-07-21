@@ -286,7 +286,7 @@ class RouteProviderTest extends KernelTestBase {
 
     $request = Request::create($path);
     $routes = $provider->getRouteCollectionForRequest($request);
-    $this->assertEquals($number, count($routes), 'The correct number of routes was found.');
+    $this->assertCount($number, $routes, 'The correct number of routes was found.');
     if ($expected_route_name) {
       $route_name = key(current($routes));
       $this->assertEquals($expected_route_name, $route_name, 'The expected route name was found.');
@@ -314,7 +314,7 @@ class RouteProviderTest extends KernelTestBase {
     $this->assertEqual($expected_route_count, count($returned_routes));
 
     foreach ($returned_routes as $route_name => $route) {
-      $this->assertTrue(array_key_exists($route_name, $sample_routes));
+      $this->assertArrayHasKey($route_name, $sample_routes);
       $this->assertEquals($route->getPath(), $sample_routes[$route_name]['path']);
     }
   }

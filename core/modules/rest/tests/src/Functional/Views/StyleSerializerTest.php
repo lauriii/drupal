@@ -75,7 +75,7 @@ class StyleSerializerTest extends ViewTestBase {
   protected function setUp($import_test_views = TRUE): void {
     parent::setUp($import_test_views);
 
-    ViewTestData::createTestViews(get_class($this), ['rest_test_views']);
+    ViewTestData::createTestViews(static::class, ['rest_test_views']);
 
     $this->adminUser = $this->drupalCreateUser([
       'administer views',
@@ -713,7 +713,7 @@ class StyleSerializerTest extends ViewTestBase {
     $this->executeView($view);
 
     $result = Json::decode($this->drupalGet('test/serialize/node-field', ['query' => ['_format' => 'json']]));
-    $this->assertEqual(count($result[2]['body']), $node->body->count(), 'Expected count of values');
+    $this->assertSame($node->body->count(), count($result[2]['body']), 'Expected count of values');
     $this->assertEqual($result[2]['body'], array_map(function ($item) {
       return $item['value'];
     }, $node->body->getValue()), 'Expected raw body values found.');
