@@ -202,6 +202,18 @@
   outline: none;
 }
 
+/* This Media Library form is an exception to the extrasmall button pattern. */
+.media-library-add-form__added-media .media-library-add-form__remove-button.button--extrasmall {
+  margin: var(--space-xs) var(--space-xs) var(--space-xs) 0; /* LTR */
+  padding: calc(calc(var(--space-xs) / 2) - 1px) calc(var(--space-s) - 1px); /* 1 */
+  font-size: var(--font-size-xs);
+}
+
+[dir="rtl"].media-library-add-form__added-media .media-library-add-form__remove-button.button--extrasmall {
+  margin-right: 0;
+  margin-left: var(--space-xs);
+}
+
 .media-library-add-form__input-wrapper {
   margin-top: var(--space-l);
   margin-bottom: var(--space-l);
