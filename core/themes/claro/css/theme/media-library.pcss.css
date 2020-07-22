@@ -113,6 +113,9 @@
 .media-library-menu__link:hover {
   text-decoration: none;
   color: var(--color-absolutezero);
+  /* These borders are necessary to replace the dividing lines while in the hover state. */
+  border-top: var(--vertical-tabs-menu-separator-size) solid var(--vertical-tabs-menu-separator-color);
+  border-bottom: var(--vertical-tabs-menu-separator-size) solid var(--vertical-tabs-menu-separator-color);
   background: var(--color-bgblue-hover);
 }
 
@@ -181,6 +184,7 @@
 }
 
 .media-library-menu + .media-library-content {
+  z-index: 1;
   border-left: var(--vertical-tabs-border); /* LTR */
   box-shadow: var(--vertical-tabs-shadow);
 }

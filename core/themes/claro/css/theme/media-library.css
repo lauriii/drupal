@@ -155,6 +155,9 @@
 .media-library-menu__link:hover {
   text-decoration: none;
   color: #003cc5;
+  /* These borders are necessary to replace the dividing lines while in the hover state. */
+  border-top: 1px solid #d4d4d8;
+  border-bottom: 1px solid #d4d4d8;
   background: #f0f5fd;
 }
 
@@ -229,6 +232,7 @@ rgba(0, 0, 0, 0.1);
 }
 
 .media-library-menu + .media-library-content {
+  z-index: 1;
   border-left: 1px
 solid
 rgba(216, 217, 224, 0.8); /* LTR */
