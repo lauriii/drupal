@@ -7,7 +7,7 @@
 
 /**
  * @file
- * Extends styles of the file link.
+ * Icon link component.
  */
 
 :root {
@@ -57,19 +57,35 @@
    */
 }
 
-.file {
-  min-height: 1.0625rem;
-  padding-left: 1.5rem; /* LTR */
-  background-position: left 0.0625rem;
-  background-size: 1rem 1rem;
-  font-size: 0.889rem;
-  line-height: 1.125rem;
+:root {
+  /* default */
+  /* active */
+  /* hover */
 }
 
-[dir="rtl"] .file {
-  padding-right: 1.5rem;
+.icon-link {
+  display: flex;
+  padding: 0;
+  border: 1px solid #d4d4d8;
+  border-radius: 50%;
+  background-color: #fff;
 }
 
-.file__size {
-  color: #545560;
+.icon-link:hover {
+  border-color: rgba(212, 212, 218, 0.8);
+  background-color: #f0f5fd;
+}
+
+.icon-link:focus {
+  box-shadow: 0 0 0 1.5px #fff, 0 0 0 3.5px #26a769;
+}
+
+.icon-link:active,
+.open > .icon-link {
+  border-color: #003cc5;
+  background-color: #003cc5;
+}
+
+.icon-link--small:focus {
+  box-shadow: 0 0 0 1px #fff, 0 0 0 3px #26a769;
 }

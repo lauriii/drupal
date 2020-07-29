@@ -30,7 +30,7 @@
    */
   /*
    * Inputs.
-   */ /* Absolute zero with opacity. */ /* Davy's gray with 0.6 opacity. */ /* Light gray with 0.3 opacity on white bg. */ /* Old silver with 0.5 opacity on white bg. */ /* (1/8)em ~ 2px */ /* (1/16)em ~ 1px */ /* Font size is too big to use 1rem for extrasmall line-height */ /* 7px inside the form element label. */ /* 8px with the checkbox width of 19px */
+   */ /* Absolute zero with opacity. */ /* Davy's gray with 0.6 opacity. */ /* Light gray with 0.3 opacity on white bg. */ /* Old silver with 0.5 opacity on white bg. */ /* (1/8)em ~ 2px */ /* (1/16)em ~ 1px */ /* 48px */ /* 150% */ /* 32px */ /* 150 % */ /* 24px */ /* 150% */ /* 7px inside the form element label. */ /* 8px with the checkbox width of 19px */
   /*
    * Details.
    */
@@ -60,8 +60,8 @@
 .form-element {
   box-sizing: border-box;
   max-width: 100%;
-  min-height: 3rem; /* iOS. */
-  padding: calc(0.75rem - 1px) calc(1rem - 1px);
+  min-height: 3rem;
+  padding: calc((1.5rem - 2px)/2) calc(1rem - 1px);
   color: #222330;
   border: 1px solid #8e929c;
   border-radius: 0.125rem;
@@ -73,12 +73,21 @@
   appearance: none; /* Being able to control inner box shadow on iOS. */
 }
 
+.no-touchevents .form--small .form-element,
+.no-touchevents .form-element--small {
+  min-height: 2rem;
+  padding: calc((0.6665rem - 2px)/2) calc(1rem - 1px);
+  font-size: 0.889rem;
+  line-height: 1.3335rem;
+}
+
+.no-touchevents .form--extrasmall .form-element,
 .no-touchevents .form-element--extrasmall,
 .no-touchevents .form-element[name$="][_weight]"] {
   min-height: 1.5rem; /* iOS. */
-  padding: calc(0.15rem - 1px) calc(0.5rem - 1px);
-  font-size: 0.889rem;
-  line-height: 1.2rem;
+  padding: calc((0.315rem - 2px)/2) calc(0.5rem - 1px);
+  font-size: 0.79rem;
+  line-height: 1.185rem;
 }
 
 /**
