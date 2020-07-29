@@ -64,7 +64,7 @@
 
 .media-library-wrapper {
   display: flex;
-  margin: -1em;
+  margin: -1em -1.5em -1em -1em;
 }
 
 /**
@@ -155,6 +155,9 @@
 .media-library-menu__link:hover {
   text-decoration: none;
   color: #003cc5;
+  /* These borders are necessary to replace the dividing lines while in the hover state. */
+  border-top: 1px solid #d4d4d8;
+  border-bottom: 1px solid #d4d4d8;
   background: #f0f5fd;
 }
 
@@ -225,12 +228,24 @@ rgba(0, 0, 0, 0.1);
 .media-library-content {
   width: 100%;
   padding: 1em;
-  border-left: 1px solid #b3b2ad; /* LTR */
   outline: none;
 }
 
-[dir="rtl"] .media-library-content {
-  border-right: 1px solid #b3b2ad;
+.media-library-menu + .media-library-content {
+  z-index: 1;
+  border-left: 1px
+solid
+rgba(216, 217, 224, 0.8); /* LTR */
+  box-shadow: 0
+2px
+4px
+rgba(0, 0, 0, 0.1);
+}
+
+[dir="rtl"] .media-library-menu + .media-library-content {
+  border-right: 1px
+solid
+rgba(216, 217, 224, 0.8);
   border-left: 0;
 }
 
@@ -868,7 +883,8 @@ rgba(0, 0, 0, 0.1);
 }
 
 .media-library-item__remove:active,
-.media-library-item__remove.button:active {
+.media-library-item__remove.button:active,
+.media-library-item__remove.button:disabled:active {
   /* !important to override button class border. */
   border-color: #003cc5 !important;
   background-image: url("../../../../misc/icons/ffffff/ex.svg");
