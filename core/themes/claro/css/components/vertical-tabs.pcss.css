@@ -7,23 +7,6 @@
 
 @import "../base/variables.pcss.css";
 
-:root {
-  --vertical-tabs-margin-vertical: var(--space-s);
-  --vertical-tabs-border-radius: var(--details-accordion-border-size-radius);
-  --vertical-tabs-shadow: var(--details-box-shadow);
-  --vertical-tabs-border-color: var(--details-border-color);
-  --vertical-tabs-border-size: 1px;
-  --vertical-tabs-border: var(--vertical-tabs-border-size) solid var(--vertical-tabs-border-color);
-  --vertical-tabs-menu-item-shadow-extraspace: 0.5rem;
-  --vertical-tabs-menu-separator-color: var(--color-lightgray);
-  --vertical-tabs-menu-separator-size: 1px;
-  --vertical-tabs-menu-width: 20em;
-  --vertical-tabs-pane-width: calc(100% - var(--vertical-tabs-menu-width));
-  --vertical-tabs-menu-link-focus-border-size: var(--details-summary-focus-border-size);
-  --vertical-tabs-menu-link--active-border-size: 4px;
-  --vertical-tabs-menu-link--active-border-color: var(--color-absolutezero);
-}
-
 /**
  * Main wrapper of vertical tabs.
  * This wrapper div is added by JavaScript.
