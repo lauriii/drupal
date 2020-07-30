@@ -56,11 +56,11 @@
   /**
    * Breadcrumb.
    */
-}
 
-/**
- * Duplicate of vertical tabs variables.
- */
+  /**
+  * Vertical Tabs.
+  */
+}
 
 .media-library-wrapper {
   display: flex;
@@ -88,25 +88,20 @@
   margin: 0;
 }
 
-/**
- * @todo Use a class instead of the li element.
- *   https://www.drupal.org/project/drupal/issues/3029227
- */
-
-.media-library-menu li {
+.media-library-menu__item {
   overflow: hidden;
   margin: -1rem -1px -0.5rem -0.5rem; /* LTR */
   padding: 0.5rem 0; /* LTR */
 }
 
-[dir="rtl"] .media-library-menu li {
+[dir="rtl"] .media-library-menu__item {
   margin-right: -0.5rem;
   margin-left: -1px;
   padding-right: 0.5rem;
   padding-left: 0;
 }
 
-.media-library-menu li::before {
+.media-library-menu__item::before {
   z-index: 1; /* The line should be kept above the vertical tabs menu link to keep it visible even if the link is hovered and gets the 'hover' background color. */
   display: block;
   width: 100%;

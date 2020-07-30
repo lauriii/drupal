@@ -1577,6 +1577,9 @@ function claro_views_pre_render(ViewExecutable $view) {
  */
 function claro_preprocess_links__media_library_menu(array &$variables) {
   foreach ($variables['links'] as &$link) {
+    // Add a class to the Media Library menu items.
+    $link['attributes']->addClass('media-library-menu__item');
+
     // This conditional exists because the media-library-menu__link class is
     // currently added by Classy, but Claro will eventually not use Classy as a
     // base theme.

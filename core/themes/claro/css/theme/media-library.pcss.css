@@ -6,26 +6,6 @@
 
 @import "../base/variables.pcss.css";
 
-/**
- * Duplicate of vertical tabs variables.
- */
-:root {
-  --vertical-tabs-margin-vertical: var(--space-s);
-  --vertical-tabs-border-radius: var(--details-accordion-border-size-radius);
-  --vertical-tabs-shadow: var(--details-box-shadow);
-  --vertical-tabs-border-color: var(--details-border-color);
-  --vertical-tabs-border-size: 1px;
-  --vertical-tabs-border: var(--vertical-tabs-border-size) solid var(--vertical-tabs-border-color);
-  --vertical-tabs-menu-item-shadow-extraspace: 0.5rem;
-  --vertical-tabs-menu-separator-color: var(--color-lightgray);
-  --vertical-tabs-menu-separator-size: 1px;
-  --vertical-tabs-menu-width: 20em;
-  --vertical-tabs-pane-width: calc(100% - var(--vertical-tabs-menu-width));
-  --vertical-tabs-menu-link-focus-border-size: var(--details-summary-focus-border-size);
-  --vertical-tabs-menu-link--active-border-size: 4px;
-  --vertical-tabs-menu-link--active-border-color: var(--color-absolutezero);
-}
-
 .media-library-wrapper {
   display: flex;
   margin: -1em -1.5em -1em -1em;
@@ -50,24 +30,20 @@
   margin: 0;
 }
 
-/**
- * @todo Use a class instead of the li element.
- *   https://www.drupal.org/project/drupal/issues/3029227
- */
-.media-library-menu li {
+.media-library-menu__item {
   overflow: hidden;
   margin: calc(var(--vertical-tabs-menu-item-shadow-extraspace) * -2) calc(var(--vertical-tabs-border-size) * -1) calc(var(--vertical-tabs-menu-item-shadow-extraspace) * -1) calc(var(--vertical-tabs-menu-item-shadow-extraspace) * -1); /* LTR */
   padding: var(--vertical-tabs-menu-item-shadow-extraspace) 0; /* LTR */
 }
 
-[dir="rtl"] .media-library-menu li {
+[dir="rtl"] .media-library-menu__item {
   margin-right: calc(var(--vertical-tabs-menu-item-shadow-extraspace) * -1);
   margin-left: calc(var(--vertical-tabs-border-size) * -1);
   padding-right: var(--vertical-tabs-menu-item-shadow-extraspace);
   padding-left: 0;
 }
 
-.media-library-menu li::before {
+.media-library-menu__item::before {
   z-index: 1; /* The line should be kept above the vertical tabs menu link to keep it visible even if the link is hovered and gets the 'hover' background color. */
   display: block;
   width: 100%;
